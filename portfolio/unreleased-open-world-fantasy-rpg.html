@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Unreleased Open World Fantasy RPG — Chris Gad</title>
+<style>
+  :root{
+    --img-hero:none;
+    --img-focus1:none;
+    --img-focus2:none;
+    --img-focus3:none;
+    --img-shot1:none;
+    --img-shot2:none;
+    --img-shot3:none;
+    --img-shot4:none;
+    --img-shot5:none;
+    --img-next:none;
+
+    /* EXACT LANDING-PAGE SHELL */
+    --page:#f8f8f6;
+    --paper:#fbfbfa;
+    --ink:#171717;
+    --muted:#777772;
+    --faint:#aaa9a4;
+    --line:#d7d7d2;
+    --chip:#eeeeea;
+    --max:1900px;
+    --number-col:86px;
+    --gap:34px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  button,a{-webkit-tap-highlight-color:transparent}
+
+  /* Exact same full-width shell used on the landing page */
+  .site{
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding-left:clamp(28px,4vw,72px);
+    padding-right:clamp(28px,4vw,72px);
+  }
+
+  /* =========================================================
+     HEADER — COPIED FROM LANDING PAGE
+     ========================================================= */
+  .site-header{
+    min-height:92px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+  }
+  .brand-name{
+    font-size:28px;
+    font-weight:400;
+    letter-spacing:-0.035em;
+  }
+  .brand-role{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:13px;
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .nav a{opacity:.76}
+  .nav a:hover{opacity:1}
+  .nav .resume-download{
+    background:var(--ink);
+    color:white;
+    padding:12px 22px;
+    opacity:1;
+  }
+
+  /* =========================================================
+     SHARED PROJECT PAGE
+     ========================================================= */
+  .project-section{
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-heading{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:24px;
+    font-size:10px;
+    font-weight:650;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+  }
+  .section-heading .slash{color:var(--faint)}
+
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    min-height:26px;
+    padding:5px 10px;
+    border:1px solid rgba(255,255,255,.32);
+    border-radius:2px;
+    font-size:10px;
+    line-height:1;
+    color:#fff;
+    background:rgba(10,10,10,.22);
+    backdrop-filter:blur(4px);
+  }
+
+  /* =========================================================
+     01 / PROJECT HERO
+     ========================================================= */
+  .project-hero{
+    position:relative;
+    min-height:500px;
+    overflow:hidden;
+    background:
+      linear-gradient(90deg,
+        rgba(8,12,15,.96) 0%,
+        rgba(8,12,15,.91) 25%,
+        rgba(8,12,15,.68) 40%,
+        rgba(8,12,15,.18) 68%,
+        rgba(8,12,15,.08) 100%),
+      var(--img-hero),
+      linear-gradient(135deg,#24292b,#7b644a);
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+  }
+  .hero-content{
+    width:min(46%,620px);
+    min-height:500px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:52px 0 50px 2px;
+  }
+  .project-hero .section-heading{
+    margin-bottom:19px;
+    color:rgba(255,255,255,.78);
+  }
+  .project-hero h1{
+    margin:0;
+    max-width:600px;
+    font-size:clamp(48px,4.5vw,76px);
+    line-height:.94;
+    font-weight:350;
+    letter-spacing:-.055em;
+  }
+  .hero-role{
+    margin-top:22px;
+    font-size:16px;
+    font-weight:550;
+  }
+  .hero-studio{
+    margin-top:4px;
+    font-size:13px;
+    color:rgba(255,255,255,.82);
+  }
+  .hero-chips{margin-top:22px}
+  .hero-note{
+    max-width:420px;
+    margin-top:22px;
+    font-size:12px;
+    line-height:1.55;
+    color:rgba(255,255,255,.72);
+  }
+
+  /* =========================================================
+     02 / OVERVIEW
+     ========================================================= */
+  .overview-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.65fr) minmax(260px,.76fr) minmax(245px,.7fr);
+    gap:0;
+    align-items:start;
+  }
+  .overview-block{
+    min-width:0;
+    min-height:228px;
+    padding-right:34px;
+  }
+  .overview-block + .overview-block{
+    border-left:1px solid var(--line);
+    padding-left:34px;
+  }
+  .overview-copy{
+    margin:0;
+    max-width:720px;
+    color:#5f5f5a;
+    font-size:16px;
+    line-height:1.62;
+  }
+  .mini-title{
+    margin-bottom:7px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .role-line{
+    margin-bottom:24px;
+    color:#666661;
+    font-size:13px;
+  }
+  .responsibilities{
+    margin:0;
+    padding-left:17px;
+    color:#575752;
+    font-size:13px;
+    line-height:1.62;
+  }
+  .detail-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+  }
+  .detail-table td{
+    padding:7px 0;
+    border-bottom:1px solid #e3e3df;
+    vertical-align:top;
+  }
+  .detail-table td:first-child{
+    width:39%;
+    padding-right:12px;
+    color:#999994;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:9px;
+  }
+  .detail-table td:last-child{color:#565651}
+
+  /* =========================================================
+     03 / DESIGN FOCUS
+     ========================================================= */
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+  }
+  .focus-card{
+    position:relative;
+    min-height:340px;
+    overflow:hidden;
+    color:#fff;
+    background-size:cover;
+    background-position:center;
+    isolation:isolate;
+  }
+  .focus-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      linear-gradient(0deg,rgba(0,0,0,.90) 0%,rgba(0,0,0,.55) 34%,rgba(0,0,0,.07) 72%),
+      linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0));
+  }
+  .focus-card.one{background-image:var(--img-focus1),linear-gradient(135deg,#70523c,#bc8b60)}
+  .focus-card.two{background-image:var(--img-focus2),linear-gradient(135deg,#283036,#725645)}
+  .focus-card.three{background-image:var(--img-focus3),linear-gradient(135deg,#8b613f,#c29c70)}
+  .focus-copy{
+    position:absolute;
+    left:22px;
+    right:22px;
+    bottom:20px;
+  }
+  .focus-copy h3{
+    margin:0;
+    font-size:17px;
+    line-height:1.12;
+    font-weight:650;
+    letter-spacing:-.02em;
+    text-transform:uppercase;
+  }
+  .focus-copy p{
+    margin:10px 0 13px;
+    max-width:430px;
+    font-size:12px;
+    line-height:1.45;
+    color:rgba(255,255,255,.84);
+  }
+  .focus-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .focus-tag{
+    padding:5px 8px;
+    border:1px solid rgba(255,255,255,.32);
+    font-size:9px;
+    color:rgba(255,255,255,.88);
+  }
+
+  /* =========================================================
+     04 / PUBLIC MEDIA
+     ========================================================= */
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:28px;
+  }
+  .media-title{
+    margin-bottom:10px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .video-frame{
+    position:relative;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:
+      linear-gradient(0deg,rgba(0,0,0,.34),rgba(0,0,0,.08)),
+      var(--img-hero),
+      #171717;
+    background-size:cover;
+    background-position:center;
+  }
+  .video-frame iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
+  .video-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .play-button{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:rgba(0,0,0,.68);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:24px;
+    padding-left:4px;
+  }
+  .video-helper{
+    position:absolute;
+    left:14px;
+    bottom:12px;
+    padding:7px 9px;
+    background:rgba(0,0,0,.58);
+    color:rgba(255,255,255,.78);
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .media-note{
+    margin:10px 0 0;
+    max-width:620px;
+    color:#74746f;
+    font-size:11px;
+    line-height:1.45;
+  }
+
+  .screenshots-heading{
+    margin:34px 0 12px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .screenshot-grid{
+    display:grid;
+    grid-template-columns:1.08fr .62fr .62fr;
+    grid-template-rows:145px 145px;
+    gap:8px;
+  }
+  .shot{
+    position:relative;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    background-color:#deded8;
+  }
+  .shot::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid rgba(0,0,0,.06);
+    pointer-events:none;
+  }
+  .shot.one{grid-row:1 / 3;background-image:var(--img-shot1),var(--img-hero)}
+  .shot.two{background-image:var(--img-shot2),var(--img-focus1)}
+  .shot.three{background-image:var(--img-shot3),var(--img-focus2)}
+  .shot.four{background-image:var(--img-shot4),var(--img-focus3)}
+  .shot.five{background-image:var(--img-shot5),var(--img-hero)}
+
+  /* =========================================================
+     05 / DEVELOPMENT CONTEXT + 06 / NEXT PROJECT
+     ========================================================= */
+  .lower-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 380px;
+    gap:38px;
+    align-items:stretch;
+  }
+  .context-panel{min-width:0}
+  .context-grid{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .context-item{
+    min-height:118px;
+    padding:18px 18px 16px 0;
+  }
+  .context-item + .context-item{
+    border-left:1px solid var(--line);
+    padding-left:18px;
+  }
+  .context-icon{
+    margin-bottom:16px;
+    width:26px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #9a9a95;
+    border-radius:50%;
+    font-size:11px;
+    font-weight:700;
+  }
+  .context-label{
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .context-value{
+    margin-top:6px;
+    color:#666661;
+    font-size:10px;
+    line-height:1.4;
+  }
+
+  .next-panel{
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .next-project{
+    display:grid;
+    grid-template-columns:158px 1fr auto;
+    gap:16px;
+    align-items:center;
+  }
+  .next-thumb{
+    aspect-ratio:16/10;
+    background:
+      var(--img-next),
+      linear-gradient(135deg,#847565,#c7b9a6);
+    background-size:cover;
+    background-position:center;
+  }
+  .next-name{
+    font-size:14px;
+    font-weight:650;
+  }
+  .next-role{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:10px;
+  }
+  .next-arrow{
+    width:34px;
+    height:34px;
+    border:1px solid #aaa;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.18s ease;
+  }
+  .next-project:hover .next-arrow{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
+  }
+
+  /* =========================================================
+     FOOTER — COPIED FROM LANDING PAGE
+     ========================================================= */
+  .footer{
+    min-height:92px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .footer-nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    color:var(--muted);
+    font-size:12px;
+    text-transform:uppercase;
+  }
+
+  @media(max-width:1250px){
+    .site{padding-left:28px;padding-right:28px}
+    .overview-grid{grid-template-columns:1.35fr .82fr .78fr}
+    .lower-grid{grid-template-columns:1fr 320px}
+    .context-grid{grid-template-columns:repeat(3,1fr)}
+    .context-item:nth-child(4){border-left:none}
+  }
+
+  @media(max-width:900px){
+    .site{padding-left:20px;padding-right:20px}
+    .nav{gap:18px}
+    .hero-content{width:min(64%,560px)}
+    .overview-grid{grid-template-columns:1fr 1fr}
+    .overview-block:nth-child(3){
+      grid-column:1 / -1;
+      border-left:0;
+      border-top:1px solid var(--line);
+      padding:24px 0 0;
+      min-height:0;
+    }
+    .focus-grid{grid-template-columns:1fr}
+    .focus-card{min-height:320px}
+    .video-grid{grid-template-columns:1fr}
+    .screenshot-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 180px 180px}
+    .shot.one{grid-column:1 / 3;grid-row:auto}
+    .lower-grid{grid-template-columns:1fr}
+    .next-panel{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}
+  }
+
+  @media(max-width:680px){
+    .site{padding-left:14px;padding-right:14px}
+    .site-header{min-height:68px}
+    .nav a:not(.resume-download){display:none}
+    .nav .resume-download{padding:10px 14px}
+    .project-section{padding:24px 0}
+    .project-hero{min-height:470px}
+    .hero-content{width:82%;min-height:470px;padding:38px 0}
+    .project-hero h1{font-size:45px}
+    .overview-grid{grid-template-columns:1fr}
+    .overview-block{min-height:0;padding:0 0 24px}
+    .overview-block + .overview-block{
+      border-left:0;
+      border-top:1px solid var(--line);
+      padding:24px 0;
+    }
+    .overview-block:nth-child(3){padding-top:24px}
+    .focus-card{min-height:300px}
+    .screenshot-grid{display:grid;grid-template-columns:1fr;grid-template-rows:none}
+    .shot,.shot.one{grid-column:auto;grid-row:auto;min-height:210px}
+    .context-grid{grid-template-columns:1fr 1fr}
+    .context-item:nth-child(3),
+    .context-item:nth-child(5){border-left:none}
+    .next-project{grid-template-columns:115px 1fr auto}
+    .footer{align-items:flex-end;gap:20px}
+    .footer-nav{gap:15px;flex-wrap:wrap;justify-content:flex-end}
+  }
+
+/* =========================================================
+   HERO — FULL BLEED FIX
+   Let the banner extend to the browser edges while keeping
+   the hero text aligned with the site's normal content grid.
+   ========================================================= */
+.project-hero{
+  margin-left:calc(-1 * clamp(28px,4vw,72px));
+  margin-right:calc(-1 * clamp(28px,4vw,72px));
+}
+
+.hero-content{
+  padding-left:clamp(28px,4vw,72px);
+  padding-right:24px;
+  width:min(50%,690px);
+}
+
+@media(max-width:1250px){
+  .project-hero{
+    margin-left:-28px;
+    margin-right:-28px;
+  }
+  .hero-content{
+    padding-left:28px;
+  }
+}
+
+@media(max-width:900px){
+  .project-hero{
+    margin-left:-20px;
+    margin-right:-20px;
+  }
+  .hero-content{
+    padding-left:20px;
+  }
+}
+
+@media(max-width:680px){
+  .project-hero{
+    margin-left:-14px;
+    margin-right:-14px;
+  }
+  .hero-content{
+    padding-left:14px;
+  }
+}
+
+
+/* =========================================================
+   DESIGN FOCUS — CLEARER IMAGES
+   Clicks are handed to Wix so the image opens in a Wix popup
+   centered on the real browser viewport.
+   ========================================================= */
+.focus-card::before{
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.66) 0%,
+      rgba(0,0,0,.34) 26%,
+      rgba(0,0,0,.07) 58%,
+      rgba(0,0,0,0) 78%
+    );
+}
+/*
+.focus-card{
+  cursor:zoom-in;
+}
+*/
+.focus-copy h3,
+.focus-copy p{
+  text-shadow:0 1px 8px rgba(0,0,0,.62);
+}
+
+.focus-copy p{
+  margin-bottom:0;
+}
+
+.media-note{
+  max-width:none;
+  white-space:nowrap;
+  font-size:10px;
+}
+
+@media(max-width:900px){
+  .media-note{
+    white-space:normal;
+  }
+}
+
+
+/* =========================================================
+   SCREENSHOTS — MATCH PUBLIC SCREENSHOT ASPECT RATIO
+   Reference image: 1000 × 563 (~16:9)
+   ========================================================= */
+.screenshot-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:none;
+  gap:10px;
+}
+
+.shot,
+.shot.one{
+  grid-column:auto;
+  grid-row:auto;
+  min-height:0;
+  aspect-ratio:1000 / 563;
+  background-size:cover;
+  background-position:center;
+}
+
+@media(max-width:680px){
+  .screenshot-grid{
+    grid-template-columns:1fr;
+  }
+
+  .shot,
+  .shot.one{
+    aspect-ratio:1000 / 563;
+    min-height:0;
+  }
+}
+
+
+/* =========================================================
+   SCREENSHOTS — RESTORE MOSAIC, KEEP ~16:9 IMAGE PROPORTIONS
+   One large image left + four smaller images right.
+   ========================================================= */
+.screenshot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:none;
+  gap:10px;
+  align-items:stretch;
+}
+
+.shot,
+.shot.one{
+  min-height:0;
+  grid-column:auto;
+  grid-row:auto;
+  background-size:cover;
+  background-position:center;
+}
+
+.shot.one{
+  aspect-ratio:1000 / 563;
+}
+
+.screenshot-small-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  height:100%;
+}
+
+.screenshot-small-grid .shot{
+  width:100%;
+  height:100%;
+  aspect-ratio:auto;
+}
+
+/* Mobile: keep the large image first, then the four 16:9 images. */
+@media(max-width:680px){
+  .screenshot-grid{
+    grid-template-columns:1fr;
+  }
+
+  .shot.one{
+    aspect-ratio:1000 / 563;
+  }
+
+  .screenshot-small-grid{
+    grid-template-columns:1fr;
+    grid-template-rows:none;
+  }
+
+  .screenshot-small-grid .shot{
+    height:auto;
+    aspect-ratio:1000 / 563;
+  }
+}
+
+
+/* =========================================================
+   READABILITY PASS — PROJECT CONTENT
+   Keeps the landing-page header/footer shell unchanged while
+   increasing the project-page typography substantially.
+   ========================================================= */
+
+/* Section labels */
+.project-section > .section-heading,
+.project-hero .section-heading,
+.context-panel > .section-heading,
+.next-panel > .section-heading{
+  font-size:13px;
+  margin-bottom:26px;
+}
+
+/* Hero supporting text */
+.hero-role{
+  font-size:20px;
+}
+
+.hero-studio{
+  font-size:16px;
+}
+
+.chip{
+  font-size:12px;
+  min-height:30px;
+  padding:6px 11px;
+}
+
+.hero-note{
+  max-width:520px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* Overview */
+.overview-copy{
+  max-width:760px;
+  font-size:19px;
+  line-height:1.65;
+}
+
+.mini-title{
+  font-size:12px;
+  margin-bottom:9px;
+}
+
+.role-line{
+  font-size:15px;
+  line-height:1.45;
+}
+
+.responsibilities{
+  font-size:15px;
+  line-height:1.7;
+}
+
+.detail-table{
+  font-size:13.5px;
+}
+
+.detail-table td{
+  padding:9px 0;
+}
+
+.detail-table td:first-child{
+  font-size:11px;
+}
+
+/* Design Focus */
+.focus-copy{
+  left:24px;
+  right:24px;
+  bottom:22px;
+}
+
+.focus-copy h3{
+  font-size:21px;
+  line-height:1.15;
+}
+
+.focus-copy p{
+  max-width:520px;
+  font-size:15px;
+  line-height:1.5;
+  margin-top:11px;
+}
+
+/* Public Media */
+.media-title,
+.screenshots-heading{
+  font-size:13px;
+}
+
+.media-note{
+  font-size:12.5px;
+  line-height:1.5;
+}
+
+/* Development Context */
+.context-icon{
+  width:30px;
+  height:30px;
+  font-size:12px;
+}
+
+.context-label{
+  font-size:11px;
+}
+
+.context-value{
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* Next Project */
+.next-name{
+  font-size:17px;
+}
+
+.next-role{
+  font-size:12.5px;
+}
+
+/* Give the larger overview type enough vertical room. */
+.overview-block{
+  min-height:270px;
+}
+
+/* Responsive readability */
+@media(max-width:1250px){
+  .overview-copy{font-size:18px}
+  .responsibilities{font-size:14.5px}
+  .detail-table{font-size:13px}
+  .focus-copy h3{font-size:19px}
+  .focus-copy p{font-size:14px}
+  .media-note{font-size:11.5px}
+}
+
+@media(max-width:900px){
+  .project-section > .section-heading,
+  .project-hero .section-heading,
+  .context-panel > .section-heading,
+  .next-panel > .section-heading{
+    font-size:12px;
+  }
+
+  .overview-copy{font-size:17px}
+  .overview-block{min-height:0}
+  .focus-copy h3{font-size:20px}
+  .focus-copy p{font-size:14.5px}
+  .media-note{
+    font-size:12.5px;
+    white-space:normal;
+  }
+}
+
+@media(max-width:680px){
+  .hero-role{font-size:18px}
+  .hero-studio{font-size:14px}
+  .hero-note{font-size:14px}
+  .overview-copy{font-size:16px}
+  .responsibilities{font-size:14px}
+  .detail-table{font-size:12.5px}
+  .focus-copy h3{font-size:18px}
+  .focus-copy p{font-size:13.5px}
+  .context-value{font-size:12.5px}
+}
+
+
+/* =========================================================
+   CLEAN PROJECT ENDING — PUBLIC NOTE + FEATURED NEXT PROJECT
+   ========================================================= */
+.project-closing{
+  padding:34px 0 38px;
+  border-bottom:1px solid var(--line);
+}
+
+.development-note{
+  display:grid;
+  grid-template-columns:160px minmax(0,760px);
+  gap:30px;
+  align-items:start;
+  padding:4px 0 34px;
+  margin-bottom:34px;
+  border-bottom:1px solid var(--line);
+}
+
+.development-note-label{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.development-note p{
+  margin:0;
+  color:#666661;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.next-section-heading{
+  font-size:13px;
+  margin-bottom:24px;
+}
+
+.next-feature{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(330px,.72fr);
+  min-height:330px;
+  overflow:hidden;
+  background:#151515;
+  color:#fff;
+}
+
+.next-feature-image{
+  min-height:330px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.02) 58%,rgba(0,0,0,.36) 100%),
+    var(--img-next),
+    linear-gradient(135deg,#28231f,#6a5140);
+  background-size:cover;
+  background-position:center;
+  transition:transform .45s ease;
+}
+
+.next-feature-content{
+  display:flex;
+  flex-direction:column;  justify-content:center;
+  padding:42px 46px;
+  background:
+    linear-gradient(135deg,rgba(18,18,18,.98),rgba(25,25,25,.96));
+}
+
+.next-feature-kicker{
+  margin-bottom:14px;
+  color:rgba(255,255,255,.58);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.next-feature h2{
+  margin:0;
+  font-size:clamp(34px,3vw,52px);
+  line-height:1;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.next-feature-role{
+  margin-top:13px;
+  color:rgba(255,255,255,.70);
+  font-size:15px;
+}
+
+.next-feature-cta{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:44px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.next-feature-arrow{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:50%;
+  font-size:18px;
+  transition:.2s ease;
+}
+
+.next-feature:hover .next-feature-image{
+  transform:scale(1.018);
+}
+
+.next-feature:hover .next-feature-arrow{
+  background:#fff;
+  color:#171717;
+  border-color:#fff;
+}
+
+@media(max-width:900px){
+  .development-note{
+    grid-template-columns:130px 1fr;
+  }
+
+  .next-feature{
+    grid-template-columns:1.35fr .85fr;
+  }
+
+  .next-feature-content{
+    padding:34px;
+  }
+}
+
+@media(max-width:680px){
+  .project-closing{
+    padding:26px 0 30px;
+  }
+
+  .development-note{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding-bottom:24px;
+    margin-bottom:26px;
+  }
+
+  .development-note p{
+    font-size:14px;
+  }
+
+  .next-feature{
+    grid-template-columns:1fr;
+  }
+
+  .next-feature-image{
+    min-height:240px;
+  }
+
+  .next-feature-content{
+    padding:28px 24px 30px;
+  }
+
+  .next-feature-role{
+    font-size:14px;
+  }
+
+  .next-feature-cta{
+    margin-top:28px;
+  }
+}
+
+
+/* =========================================================
+   SINGLE-LINE DEVELOPMENT NOTES
+   Keep both public-development messages on one line at desktop widths.
+   ========================================================= */
+.hero-note{
+  max-width:none;
+  white-space:nowrap;
+}
+
+.development-note{
+  grid-template-columns:130px minmax(0,1fr);
+}
+
+.development-note p{
+  max-width:none;
+  white-space:nowrap;
+}
+
+@media(max-width:900px){
+  .hero-note,
+  .development-note p{
+    white-space:normal;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — BETTER USE OF LEFT-COLUMN WHITE SPACE
+   ========================================================= */
+.overview-block{
+  min-height:245px;
+}
+
+.overview-block:first-child{
+  display:flex;
+  align-items:center;
+}
+
+.overview-block:first-child .overview-copy{
+  max-width:690px;
+}
+
+/* On narrower layouts, return to normal top alignment. */
+@media(max-width:900px){
+  .overview-block:first-child{
+    display:block;
+  }
+
+  .overview-block:first-child .overview-copy{
+    max-width:760px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — REMOVE DEAD SPACE BESIDE INTRO PARAGRAPH
+   Bring the vertical divider closer and let the copy use the
+   full width of its column.
+   ========================================================= */
+.overview-grid{
+  grid-template-columns:
+    minmax(0,1.15fr)
+    minmax(300px,.72fr)
+    minmax(320px,.85fr);
+}
+
+.overview-block{
+  padding-right:26px;
+}
+
+.overview-block + .overview-block{
+  padding-left:26px;
+}
+
+.overview-block:first-child .overview-copy{
+  width:100%;
+  max-width:none;
+}
+
+@media(max-width:1250px){
+  .overview-grid{
+    grid-template-columns:
+      minmax(0,1.1fr)
+      minmax(280px,.78fr)
+      minmax(290px,.82fr);
+  }
+}
+
+@media(max-width:900px){
+  .overview-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .overview-block{
+    padding-right:24px;
+  }
+
+  .overview-block + .overview-block{
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — REBALANCED THREE-COLUMN LAYOUT
+   More breathing room for the intro copy, less dead space
+   between My Role and Project Details.
+   ========================================================= */
+.overview-grid{
+  grid-template-columns:
+    minmax(0,1.38fr)
+    minmax(255px,.58fr)
+    minmax(300px,.72fr);
+}
+
+.overview-block{
+  padding-right:30px;
+}
+
+.overview-block + .overview-block{
+  padding-left:30px;
+}
+
+.overview-block:first-child .overview-copy{
+  width:100%;
+  max-width:none;
+}
+
+@media(max-width:1250px){
+  .overview-grid{
+    grid-template-columns:
+      minmax(0,1.28fr)
+      minmax(245px,.62fr)
+      minmax(285px,.72fr);
+  }
+}
+
+@media(max-width:900px){
+  .overview-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .overview-block{
+    padding-right:24px;
+  }
+
+  .overview-block + .overview-block{
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — SMALL SPACING TWEAK
+   Add a little more breathing room between the intro copy
+   and the My Role column without changing the overall balance.
+   ========================================================= */
+.overview-block:first-child{
+  padding-right:42px;
+}
+
+.overview-block:nth-child(2){
+  padding-left:34px;
+}
+
+/* Keep the gap between My Role and Project Details tighter. */
+.overview-block:nth-child(3){
+  padding-left:26px;
+}
+
+@media(max-width:900px){
+  .overview-block:first-child{
+    padding-right:24px;
+  }
+
+  .overview-block:nth-child(2),
+  .overview-block:nth-child(3){
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — DOUBLE GAP BETWEEN INTRO + MY ROLE
+   ========================================================= */
+.overview-block:first-child{
+  padding-right:84px;
+}
+
+.overview-block:nth-child(2){
+  padding-left:68px;
+}
+
+@media(max-width:1250px){
+  .overview-block:first-child{
+    padding-right:64px;
+  }
+
+  .overview-block:nth-child(2){
+    padding-left:52px;
+  }
+}
+
+@media(max-width:900px){
+  .overview-block:first-child{
+    padding-right:24px;
+  }
+
+  .overview-block:nth-child(2){
+    padding-left:24px;
+  }
+}
+
+
+  /* Standardized extensions while preserving the original 1001 template */
+  .direct-mosaic .shot{
+    background-image:none !important;
+  }
+  .direct-mosaic .shot img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .three-up{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .media-image-frame{
+    width:100%;
+    aspect-ratio:16/9;
+    background-size:cover;
+    background-position:center;
+    background-color:#171717;
+  }
+  @media(max-width:900px){
+    .three-up{grid-template-columns:1fr}
+  }
+
+
+  /* =========================================================
+     PATCH 13 — stable gallery loading + custom video posters
+     ========================================================= */
+
+  .portfolio-gallery .shot,
+  .curated-mosaic .shot,
+  .recovered-gallery .shot{
+    background-image:none !important;
+    background:#171717 !important;
+  }
+
+  .portfolio-gallery .shot img,
+  .curated-mosaic .shot img,
+  .recovered-gallery .shot img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .video-frame{
+    background:#171717 !important;
+  }
+
+  .video-poster{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    border:0;
+    overflow:hidden;
+    background:#171717;
+    cursor:pointer;
+    color:#fff;
+  }
+
+  .video-poster img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+
+  .video-poster::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      0deg,
+      rgba(0,0,0,.24),
+      rgba(0,0,0,.04) 58%,
+      rgba(0,0,0,.08)
+    );
+    pointer-events:none;
+  }
+
+  .video-poster-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:2;
+    transform:translate(-50%,-50%);
+    width:66px;
+    height:66px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.72);
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 8px 28px rgba(0,0,0,.22);
+    transition:transform .18s ease, background .18s ease;
+  }
+
+  .video-poster-play::before{
+    content:"";
+    margin-left:4px;
+    width:0;
+    height:0;
+    border-top:9px solid transparent;
+    border-bottom:9px solid transparent;
+    border-left:15px solid #fff;
+  }
+
+  .video-poster:hover .video-poster-play{
+    transform:translate(-50%,-50%) scale(1.06);
+    background:rgba(0,0,0,.82);
+  }
+
+  .video-poster-label{
+    position:absolute;
+    z-index:2;
+    left:14px;
+    bottom:12px;
+    max-width:calc(100% - 28px);
+    padding:7px 9px;
+    background:rgba(0,0,0,.62);
+    color:rgba(255,255,255,.88);
+    font-size:9px;
+    line-height:1.25;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    pointer-events:none;
+  }
+
+  .video-frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
+
+
+
+/* =========================================================
+   PATCH 15 — unified gallery + video layout
+   ========================================================= */
+.cg-gallery{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) !important;
+  gap:10px !important;
+  height:clamp(430px,43vw,620px) !important;
+  min-height:0 !important;
+}
+.cg-gallery-main,
+.cg-gallery-small .cg-gallery-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery-main img,
+.cg-gallery-small .cg-gallery-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.cg-gallery-small{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery.cg-count-2 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+}
+.cg-gallery.cg-count-3 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small .cg-gallery-item:last-child{
+  grid-column:1/-1;
+}
+.cg-gallery.cg-count-1{
+  grid-template-columns:1fr !important;
+}
+.cg-gallery.cg-count-1 .cg-gallery-small{
+  display:none;
+}
+.cg-gallery-footer{
+  display:flex;
+  justify-content:flex-end;
+  border-top:1px solid var(--line,#d9d9d4);
+  margin-top:14px;
+  padding-top:14px;
+}
+.cg-view-all{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  color:#171717;
+  font:inherit;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.cg-view-all:hover{opacity:.55}
+.cg-view-all .cg-gallery-arrow{
+  font-size:17px;
+  line-height:1;
+  font-weight:400;
+}
+.cg-expanded[hidden]{display:none !important}
+.cg-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line,#d9d9d4);
+}
+.cg-expanded-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+}
+.cg-expanded-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.video-grid{
+  gap:10px !important;
+}
+.video-grid.cg-video-count-1{
+  grid-template-columns:1fr !important;
+}
+.video-grid.cg-video-count-2,
+.video-grid.cg-video-count-4{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.video-grid.cg-video-count-3,
+.video-grid.cg-video-count-5,
+.video-grid.cg-video-count-6{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+@media(max-width:1000px){
+  .cg-expanded{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:760px){
+  .cg-gallery{
+    grid-template-columns:1fr !important;
+    height:auto !important;
+  }
+  .cg-gallery-main{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-gallery-small{
+    height:auto;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:repeat(2,150px) !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-small,
+  .cg-gallery.cg-count-3 .cg-gallery-small{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-item,
+  .cg-gallery.cg-count-3 .cg-gallery-item{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .video-grid,
+  .video-grid.cg-video-count-1,
+  .video-grid.cg-video-count-2,
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-4,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+  /* PATCH 19 — resume title fit */
+  .brand-role{
+    font-size:12px !important;
+    line-height:1.25;
+  }
+</style>
+<link rel="stylesheet" href="/portfolio/assets/css/standalone.css"/>
+</head>
+<body>
+<div class="site">
+<!-- =======================================================
+       CANONICAL LANDING-PAGE HEADER
+       ======================================================= -->
+<header class="site-header">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<nav class="nav">
+<a data-nav="home" href="#">Home</a>
+<a class="resume-download" data-nav="resume" href="#">Download Resume</a>
+</nav>
+</header>
+<!-- 01 / PROJECT -->
+<section class="project-hero" id="top">
+<div class="hero-content">
+<div class="section-heading">
+<span>01</span><span class="slash">/</span><span>Project</span>
+</div>
+<h1>UNRELEASED<br/>OPEN WORLD FANTASY RPG</h1>
+<div class="hero-role">Principal Level Designer</div>
+<div class="hero-studio">Eidos Montréal</div>
+<div class="chip-row hero-chips"><span class="chip">Open World</span><span class="chip">World Structure</span><span class="chip">Biomes</span><span class="chip">3Cs</span><span class="chip">Tutorials</span><span class="chip">Guidelines</span></div>
+</div>
+</section>
+<section class="project-section" id="overview">
+<div class="section-heading">
+<span>02</span><span class="slash">/</span><span>Overview</span>
+</div>
+<div class="overview-grid">
+<div class="overview-block">
+<p class="overview-copy">As Principal Level Designer, I designed and owned large explorable regions supporting co-op play, systemic encounters and player-deployed tools across layered biomes. I co-developed the world benchmark with Art and Narrative, aligning environmental storytelling with layout and gameplay needs, and mentored junior and intermediate level designers through hands-on feedback, workflow guidance and design reviews.</p>
+</div>
+<div class="overview-block">
+<div class="mini-title">My Role</div>
+<div class="role-line">Principal Level Designer</div>
+<div class="mini-title">Key Responsibilities</div>
+<ul class="responsibilities"><li>Large explorable region ownership</li><li>Co-op play support</li><li>Systemic encounters</li><li>Player-deployed tools</li><li>Layered biome structure</li><li>World benchmark co-development</li><li>Environmental storytelling alignment</li><li>Mentorship &amp; design reviews</li></ul>
+</div>
+<div class="overview-block">
+<div class="mini-title">Project Details</div>
+<table class="detail-table"><tr><td>Studio</td><td>Eidos Montréal</td></tr><tr><td>Project</td><td>Unreleased Fantasy RPG</td></tr><tr><td>Role</td><td>Principal Level Designer</td></tr><tr><td>Format</td><td>Semi-Open World</td></tr><tr><td>Genre</td><td>Fantasy Action RPG</td></tr></table>
+</div>
+</div>
+</section>
+<section class="project-section" id="design-focus">
+<div class="section-heading">
+<span>03</span><span class="slash">/</span><span>Design Focus</span>
+</div>
+<div class="focus-grid">
+<article class="focus-card one">
+<div class="focus-copy">
+<h3>World Structure &amp; Biomes</h3>
+<p>Helping establish a semi-open world structure, biome variety and progression flow so exploration felt expansive but purposeful.</p>
+</div>
+</article>
+<article class="focus-card two">
+<div class="focus-copy">
+<h3>Tutorials &amp; 3Cs</h3>
+<p>Designing and iterating on camera, controls and character tutorials to define the core player experience.</p>
+</div>
+</article>
+<article class="focus-card three">
+<div class="focus-copy">
+<h3>Guidelines &amp; Scalability</h3>
+<p>Developing level design direction and guidelines to support consistency, narrative needs and systemic gameplay across the project.</p>
+</div>
+</article>
+</div>
+</section>
+
+<section class="project-section" id="gallery">
+<div class="section-heading">
+<span>04</span><span class="slash">/</span><span>Gallery</span>
+</div>
+<div class="cg-gallery cg-count-5"><button aria-label="Open Fantasy RPG gallery image 1" class="cg-gallery-main" data-cg-image="https://static.wixstatic.com/media/0280ad_0bad9197df7e40fa9e84bb33e70a6a33~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 1" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_0bad9197df7e40fa9e84bb33e70a6a33~mv2.jpg"/></button><div class="cg-gallery-small"><button aria-label="Open Fantasy RPG gallery image 2" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_b8f71a37a5f341fd971c25c7cab66c72~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 2" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_b8f71a37a5f341fd971c25c7cab66c72~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 3" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_5769d1215d914a3bb1fd16c806b2c683~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 3" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_5769d1215d914a3bb1fd16c806b2c683~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 4" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_087255f094a6469f9fa360d7f7819489~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 4" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_087255f094a6469f9fa360d7f7819489~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 5" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a8e5f37dc69440beb7c5123cee764b1f~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 5" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_a8e5f37dc69440beb7c5123cee764b1f~mv2.jpg"/></button></div></div><div class="cg-gallery-footer"><button class="cg-view-all" data-cg-expand="fantasy-rpg-main" type="button"><span>View all 12 images</span><span class="cg-gallery-arrow">→</span></button></div><div class="cg-expanded" data-cg-expanded="fantasy-rpg-main" hidden=""><button aria-label="Open Fantasy RPG gallery image 1" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_0bad9197df7e40fa9e84bb33e70a6a33~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 1" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_0bad9197df7e40fa9e84bb33e70a6a33~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 2" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_b8f71a37a5f341fd971c25c7cab66c72~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 2" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_b8f71a37a5f341fd971c25c7cab66c72~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 3" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_5769d1215d914a3bb1fd16c806b2c683~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 3" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_5769d1215d914a3bb1fd16c806b2c683~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 4" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_087255f094a6469f9fa360d7f7819489~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 4" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_087255f094a6469f9fa360d7f7819489~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 5" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a8e5f37dc69440beb7c5123cee764b1f~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 5" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a8e5f37dc69440beb7c5123cee764b1f~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 6" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_655d51dee63e469498cc66b82da2ed75~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 6" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_655d51dee63e469498cc66b82da2ed75~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 7" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_170dcbf4d81b4e18abc27e57f7d1fdc8~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 7" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_170dcbf4d81b4e18abc27e57f7d1fdc8~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 8" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6503f6f8586b495597c179814c9de4f4~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 8" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_6503f6f8586b495597c179814c9de4f4~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 9" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_7f961ab8402244c4a044117947b20aac~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 9" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_7f961ab8402244c4a044117947b20aac~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 10" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_02670019ab3e4ae6bc523b2939f30fbb~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 10" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_02670019ab3e4ae6bc523b2939f30fbb~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 11" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_ff01d63523e44861acbd4f2b65b95989~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 11" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_ff01d63523e44861acbd4f2b65b95989~mv2.jpg"/></button><button aria-label="Open Fantasy RPG gallery image 12" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_7a77ad69ad7e455cbc132105f1f6c158~mv2.jpg" type="button"><img alt="Fantasy RPG gallery image 12" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_7a77ad69ad7e455cbc132105f1f6c158~mv2.jpg"/></button></div>
+</section>
+<section class="project-closing">
+<div class="section-heading next-section-heading">
+<span>05</span><span class="slash">/</span><span>Next Project</span>
+</div>
+<a class="next-feature" data-nav="next" href="#">
+<div class="next-feature-image"></div>
+<div class="next-feature-content">
+<div class="next-feature-kicker">Continue Exploring</div>
+<h2>Unreleased PVP / PVE Open World FPS</h2>
+<div class="next-feature-role">Senior Level Designer</div>
+<div class="next-feature-cta"><span>View Project</span><span class="next-feature-arrow">→</span></div>
+</div>
+</a>
+</section>
+<!-- =======================================================
+       CANONICAL LANDING-PAGE FOOTER
+       ======================================================= -->
+<footer class="footer">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<div class="footer-nav">
+<a data-nav="home" href="#">Home</a>
+<a data-nav="resume" href="#">Download Resume</a>
+<a data-external="linkedin" href="https://www.linkedin.com/in/chrisgad">LinkedIn</a>
+</div>
+</footer><div style="height:25px;"></div>
+<div style="width:100%; height:1px; background:lightgrey;"></div>
+</div>
+<script>
+const CONFIG = {
+  images:{
+    hero:"https://static.wixstatic.com/media/0280ad_8a0ead318766497396bfc98184b8e974~mv2.jpg",
+    focus1:"https://static.wixstatic.com/media/0280ad_6503f6f8586b495597c179814c9de4f4~mv2.jpg",
+    focus2:"https://static.wixstatic.com/media/0280ad_02670019ab3e4ae6bc523b2939f30fbb~mv2.jpg",
+    focus3:"https://static.wixstatic.com/media/0280ad_170dcbf4d81b4e18abc27e57f7d1fdc8~mv2.jpg",
+    next:"https://static.wixstatic.com/media/0280ad_f23b6eb3a5744fed86facec49dda9e3f~mv2.jpg"
+  },
+  videos:{
+    
+  },
+  links:{
+    home:"/",
+    resume:"https://0280ad4f-339b-406b-b50f-32dca5251a14.usrfiles.com/ugd/0280ad_f685989048a849a0a076404b09ea0107.pdf",
+    next:"/unreleased-pvp-pve-open-world-fps"
+  }
+};
+
+const imageVars={
+  hero:"--img-hero",
+  focus1:"--img-focus1",
+  focus2:"--img-focus2",
+  focus3:"--img-focus3",
+  next:"--img-next"
+};
+for(const [key,cssVar] of Object.entries(imageVars)){
+  const url=CONFIG.images[key];
+  if(url && url.trim()){
+    document.documentElement.style.setProperty(cssVar,`url("${url.trim().replace(/"/g,'\\\"')}")`);
+  }
+}
+
+function youtubeEmbedUrl(url){
+  if(!url || !url.trim()) return "";
+  try{
+    const u=new URL(url.trim());
+    let id="";
+    if(u.hostname.includes("youtu.be")) id=u.pathname.replace("/","");
+    else if(u.pathname.includes("/embed/")) id=u.pathname.split("/embed/")[1].split("/")[0];
+    else id=u.searchParams.get("v") || "";
+    if(id){
+      id=id.split("?")[0].split("&")[0];
+      return `https://www.youtube.com/embed/${id}?rel=0`;
+    }
+  }catch(e){}
+  return "";
+}
+function mountVideo(frameId,url,title){
+  const frame=document.getElementById(frameId);
+  const embed=youtubeEmbedUrl(url);
+  if(!frame || !embed) return;
+  frame.innerHTML=`<iframe src="${embed}" title="${title}" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>`;
+}
+
+
+function requestWixNavigation(url){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({type:"navigate",url:url.trim()},"*");
+}
+document.querySelectorAll("[data-nav]").forEach(el=>{
+  const url=CONFIG.links[el.dataset.nav];
+  if(url && url.trim()){
+    el.href=url.trim();
+    el.addEventListener("click",e=>{e.preventDefault();requestWixNavigation(url);});
+  }else el.addEventListener("click",e=>e.preventDefault());
+});
+document.querySelectorAll("[data-external]").forEach(el=>{
+  const url=el.getAttribute("href");
+  if(url && url.trim()){
+    el.addEventListener("click",e=>{
+      e.preventDefault();
+      window.parent.postMessage({type:"externalNavigate",url:url.trim()},"*");
+    });
+  }
+});
+
+
+/* PATCH 15 — unified gallery interaction and video-grid sizing */
+function cgOpenProjectImage(url,alt){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({
+    type:"openProjectImage",
+    url:url.trim(),
+    alt:alt || "Project image"
+  },"*");
+}
+document.querySelectorAll("[data-cg-image]").forEach(el=>{
+  const open=()=>{
+    const img=el.querySelector("img");
+    cgOpenProjectImage(el.dataset.cgImage,img?.alt || "Project image");
+  };
+  el.addEventListener("click",open);
+  el.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}
+  });
+});
+document.querySelectorAll("[data-cg-expand]").forEach(btn=>{
+  const key=btn.dataset.cgExpand;
+  const gallery=document.querySelector(`[data-cg-expanded="${key}"]`);
+  if(!gallery) return;
+  const label=btn.querySelector("span:first-child");
+  const arrow=btn.querySelector(".cg-gallery-arrow");
+  const original=label ? label.textContent : "View all images";
+  btn.addEventListener("click",()=>{
+    const opening=gallery.hasAttribute("hidden");
+    if(opening){
+      gallery.removeAttribute("hidden");
+      if(label) label.textContent="Hide images";
+      if(arrow) arrow.textContent="↑";
+    }else{
+      gallery.setAttribute("hidden","");
+      if(label) label.textContent=original;
+      if(arrow) arrow.textContent="→";
+    }
+  });
+});
+document.querySelectorAll(".video-grid").forEach(grid=>{
+  const count=Array.from(grid.children).filter(el=>el.nodeType===1).length;
+  if(count>0) grid.classList.add(`cg-video-count-${Math.min(count,6)}`);
+});
+
+</script>
+
+<script>
+/* PATCH 26.8 — universal Wix HTML-component history/scroll bridge.
+   Uses a handshake so wheel input is intercepted only when the Wix page
+   confirms its message listener is alive. This avoids hard-locks after
+   browser back/forward restoration while removing unreliable iframe
+   scroll chaining when the bridge is active. */
+(function(){
+  if(window.__cgUniversalWixBridgeV3) return;
+  window.__cgUniversalWixBridgeV3 = true;
+
+  let bridgeActive = false;
+
+  function postToWix(message){
+    try{ window.parent.postMessage(message, "*"); }catch(e){}
+  }
+
+  function announceBridge(){
+    bridgeActive = false;
+    try{
+      if("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0,0);
+    }catch(e){}
+
+    postToWix({type:"portfolioBridgeHello"});
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },250);
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },900);
+  }
+
+  window.addEventListener("message", event=>{
+    if(event?.data?.type === "portfolioBridgeActive") bridgeActive = true;
+  });
+
+  window.addEventListener("pageshow", announceBridge);
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", announceBridge, {once:true});
+  }else{
+    setTimeout(announceBridge,0);
+  }
+
+  window.addEventListener("wheel", event=>{
+    if(!bridgeActive || event.ctrlKey || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
+
+    let deltaY = event.deltaY;
+    if(event.deltaMode === 1) deltaY *= 16;
+    else if(event.deltaMode === 2) deltaY *= window.innerHeight;
+
+    event.preventDefault();
+    postToWix({type:"portfolioScroll", deltaY});
+  },{passive:false});
+})();
+</script>
+
+<script>
+/* FINAL GALLERY PATCH — fixed-height browsing + lightbox sequence metadata.
+   Keeps Wix iframe height stable and sends the full gallery order/index to
+   the Project Image Viewer so Previous / Next controls can navigate it. */
+(function(){
+  function getExpandedSourceFor(el){
+    var expanded = el.closest && el.closest('.cg-expanded');
+    if(expanded) return expanded;
+
+    var preview = el.closest && el.closest('.cg-gallery');
+    if(!preview) return null;
+
+    var footer = preview.nextElementSibling;
+    if(!footer || !footer.classList.contains('cg-gallery-footer')){
+      footer = preview.parentElement && preview.parentElement.querySelector('.cg-gallery-footer');
+    }
+    var btn = footer && footer.querySelector('[data-cg-expand]');
+    if(!btn) return null;
+
+    var key = btn.getAttribute('data-cg-expand');
+    if(!key) return null;
+    return document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+  }
+
+  function gallerySequence(el){
+    var source = getExpandedSourceFor(el);
+    var scope = source || (el.closest && el.closest('section')) || document;
+    var nodes = Array.from(scope.querySelectorAll('[data-cg-image]'));
+    var seen = new Set();
+    var images = [];
+
+    nodes.forEach(function(node){
+      var url = (node.getAttribute('data-cg-image') || '').trim();
+      if(url && !seen.has(url)){
+        seen.add(url);
+        images.push(url);
+      }
+    });
+
+    return images;
+  }
+
+  function openProjectImage(el){
+    if(!el) return;
+    var url = (el.getAttribute('data-cg-image') || '').trim();
+    if(!url) return;
+
+    var img = el.querySelector('img');
+    var images = gallerySequence(el);
+    var index = Math.max(0, images.indexOf(url));
+
+    window.parent.postMessage({
+      type:'openProjectImage',
+      url:url,      alt:(img && img.alt) || 'Project image',
+      images:images.length ? images : [url],
+      index:index
+    }, '*');
+  }
+
+  function setupFixedGalleryBrowsers(){
+    document.querySelectorAll('[data-cg-expand]').forEach(function(oldBtn){
+      if(oldBtn.dataset.cgFixedBrowser === '1') return;
+
+      var key = oldBtn.getAttribute('data-cg-expand');
+      var expanded = document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+      if(!expanded) return;
+
+      var footer = oldBtn.closest('.cg-gallery-footer');
+      var preview = footer && footer.previousElementSibling && footer.previousElementSibling.classList.contains('cg-gallery')
+        ? footer.previousElementSibling
+        : (footer ? footer.parentElement.querySelector('.cg-gallery') : null);
+      if(!preview) return;
+
+      var slots = Array.from(preview.querySelectorAll('[data-cg-image]'));
+      var source = Array.from(expanded.querySelectorAll('[data-cg-image]'));
+      if(!slots.length || !source.length) return;
+
+      var items = source.map(function(el){
+        var img = el.querySelector('img');
+        return {
+          url:(el.getAttribute('data-cg-image') || '').trim(),
+          alt:(img && img.alt) || 'Project image'
+        };
+      }).filter(function(item){ return item.url; });
+
+      expanded.setAttribute('hidden','');
+      expanded.style.display = 'none';
+
+      if(items.length <= slots.length){
+        if(footer) footer.style.display = 'none';
+        return;
+      }
+
+      // Replace the original control so older inline expand listeners are removed.
+      var btn = oldBtn.cloneNode(true);
+      oldBtn.replaceWith(btn);
+      btn.dataset.cgFixedBrowser = '1';
+
+      var label = btn.querySelector('span:first-child');
+      var arrow = btn.querySelector('.cg-gallery-arrow');
+      var pageSize = slots.length;
+      var starts = [];
+
+      for(var s=0; s<items.length; s+=pageSize) starts.push(s);
+      if(starts.length > 1){
+        var last = Math.max(0, items.length - pageSize);
+        starts[starts.length - 1] = last;
+        starts = starts.filter(function(v,i,a){ return i===0 || v!==a[i-1]; });
+      }
+
+      var page = 0;
+
+      function render(){
+        var start = starts[page];
+
+        slots.forEach(function(slot,i){
+          var item = items[start+i];
+          var img = slot.querySelector('img');
+
+          if(item){
+            slot.style.visibility = '';
+            slot.style.pointerEvents = '';
+            slot.setAttribute('data-cg-image',item.url);
+            slot.setAttribute('aria-label','Open ' + item.alt);
+
+            if(img){
+              img.src = item.url;
+              img.alt = item.alt;
+            }
+          }else{
+            slot.style.visibility = 'hidden';
+            slot.style.pointerEvents = 'none';
+            slot.removeAttribute('data-cg-image');
+          }
+        });
+
+        var end = Math.min(start + pageSize,items.length);
+
+        if(page === 0){
+          if(label) label.textContent = 'Browse all ' + items.length + ' images';
+          if(arrow) arrow.textContent = '→';
+        }else{
+          if(label) label.textContent = 'Images ' + (start+1) + '–' + end + ' of ' + items.length;
+          if(arrow) arrow.textContent = (page === starts.length-1) ? '↺' : '→';
+        }
+      }
+
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        page = (page + 1) % starts.length;
+        render();
+      });
+
+      render();
+    });
+  }
+
+  // One reliable image-open path for every gallery thumbnail.
+  document.addEventListener('click',function(e){
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  document.addEventListener('keydown',function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded',setupFixedGalleryBrowsers);
+  }else{
+    setupFixedGalleryBrowsers();
+  }
+})();
+</script>
+<script src="/portfolio/assets/js/standalone.js"></script>
+</body>
+</html>
