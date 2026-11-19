@@ -2052,58 +2052,6 @@ document.querySelectorAll(".video-grid").forEach(grid=>{
 </script>
 
 <script>
-/* PATCH 26.8 — universal Wix HTML-component history/scroll bridge.
-   Uses a handshake so wheel input is intercepted only when the Wix page
-   confirms its message listener is alive. This avoids hard-locks after
-   browser back/forward restoration while removing unreliable iframe
-   scroll chaining when the bridge is active. */
-(function(){
-  if(window.__cgUniversalWixBridgeV3) return;
-  window.__cgUniversalWixBridgeV3 = true;
-
-  let bridgeActive = false;
-
-  function postToWix(message){
-    try{ window.parent.postMessage(message, "*"); }catch(e){}
-  }
-
-  function announceBridge(){
-    bridgeActive = false;
-    try{
-      if("scrollRestoration" in history) history.scrollRestoration = "manual";
-      window.scrollTo(0,0);
-    }catch(e){}
-
-    postToWix({type:"portfolioBridgeHello"});
-    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },250);
-    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },900);
-  }
-
-  window.addEventListener("message", event=>{
-    if(event?.data?.type === "portfolioBridgeActive") bridgeActive = true;
-  });
-
-  window.addEventListener("pageshow", announceBridge);
-  if(document.readyState === "loading"){
-    document.addEventListener("DOMContentLoaded", announceBridge, {once:true});
-  }else{
-    setTimeout(announceBridge,0);
-  }
-
-  window.addEventListener("wheel", event=>{
-    if(!bridgeActive || event.ctrlKey || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
-
-    let deltaY = event.deltaY;
-    if(event.deltaMode === 1) deltaY *= 16;
-    else if(event.deltaMode === 2) deltaY *= window.innerHeight;
-
-    event.preventDefault();
-    postToWix({type:"portfolioScroll", deltaY});
-  },{passive:false});
-})();
-</script>
-
-<script>
 /* FINAL GALLERY PATCH — fixed-height browsing + lightbox sequence metadata.
    Keeps Wix iframe height stable and sends the full gallery order/index to
    the Project Image Viewer so Previous / Next controls can navigate it. */
