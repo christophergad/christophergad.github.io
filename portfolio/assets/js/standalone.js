@@ -125,9 +125,6 @@
       btn.innerHTML = `<img src="${url}" alt="">`;
       btn.addEventListener("click", () => {
         show(i);
-        requestAnimationFrame(() => {
-          overlay.scrollTo({ top: 0, behavior: "smooth" });
-        });
       });
       thumbnailsEl.appendChild(btn);
     });
@@ -135,10 +132,20 @@
 
   function updateSelectedThumbnail() {
     if (!thumbnailsEl || thumbnailsEl.hidden) return;
+    let selected = null;
     thumbnailsEl.querySelectorAll(".cg-lightbox-thumb").forEach((btn, i) => {
-      btn.classList.toggle("is-selected", i === index);
-      btn.setAttribute("aria-current", i === index ? "true" : "false");
+      const active = i === index;
+      btn.classList.toggle("is-selected", active);
+      btn.setAttribute("aria-current", active ? "true" : "false");
+      if (active) selected = btn;
     });
+    if (selected) {
+      selected.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center"
+      });
+    }
   }
 
   function show(nextIndex) {
@@ -154,7 +161,7 @@
     document.documentElement.classList.add("cg-lightbox-open");
   }
 
-  function openLightbox(message, browserMode = false) {
+  function openLightbox(message) {
     images = Array.isArray(message.images) && message.images.length
       ? message.images.filter(Boolean)
       : [message.url].filter(Boolean);
@@ -165,7 +172,7 @@
 
     if (!images.length) return;
 
-    galleryBrowserMode = browserMode;
+    galleryBrowserMode = images.length > 1;
     const requested = Number.isInteger(message.index) ? message.index : images.indexOf(message.url);
     renderGalleryThumbnails();
     show(requested < 0 ? 0 : requested);
@@ -265,7 +272,7 @@
           images: items.map(item => item.url),
           alts: items.map(item => item.alt),
           index: 0
-        }, true);
+        });
       });
     });
   }
