@@ -164,25 +164,13 @@
           ? footer.previousElementSibling
           : null;
 
-      const previewItems = preview
-        ? Array.from(preview.querySelectorAll("[data-cg-image]"))
-        : [];
-
       const expandedItems = Array.from(expanded.querySelectorAll("[data-cg-image]"));
+      if (!expandedItems.length) {
+        if (footer) footer.style.display = "none";
+        return;
+      }
 
-      // Hide the images already visible in the 5-image preview so the expanded
-      // section adds only the remaining images instead of duplicating them.
-      const previewUrls = new Set(
-        previewItems.map(el => (el.getAttribute("data-cg-image") || "").trim()).filter(Boolean)
-      );
-
-      expandedItems.forEach(el => {
-        const url = (el.getAttribute("data-cg-image") || "").trim();
-        el.classList.toggle("cg-preview-duplicate", previewUrls.has(url));
-      });
-
-      // The Wix-era fixed gallery script cloned this control and attached its
-      // own paging listener. Clone once more to strip that listener completely.
+      // Remove any listeners added by the old Wix-era gallery code.
       const btn = oldBtn.cloneNode(true);
       oldBtn.replaceWith(btn);
 
@@ -191,35 +179,33 @@
 
       const label = btn.querySelector("span:first-child");
       const arrow = btn.querySelector(".cg-gallery-arrow");
-      const collapsedLabel = label ? label.textContent : "View all images";
 
+      // Standardize the standalone control.
+      const originalText = label ? label.textContent.trim() : "";
+      const countMatch = originalText.match(/(\d+)/);
+      const countText = countMatch ? " " + countMatch[1] + " images" : " images";
+      if (label) label.textContent = "Browse all" + countText;
+      if (arrow) arrow.textContent = "↓";
       btn.setAttribute("aria-expanded", "false");
 
       btn.addEventListener("click", event => {
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        const opening = expanded.hasAttribute("hidden");
+        expanded.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
 
-        if (opening) {
-          expanded.removeAttribute("hidden");
-          btn.setAttribute("aria-expanded", "true");
-          if (label) label.textContent = "Show fewer";
-          if (arrow) arrow.textContent = "↑";
-        } else {
-          expanded.setAttribute("hidden", "");
-          btn.setAttribute("aria-expanded", "false");
-          if (label) label.textContent = collapsedLabel;
-          if (arrow) arrow.textContent = "↓";
-          if (preview) preview.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        // The action is intentionally one-way: once the user asks to browse all,
+        // keep the complete gallery open for normal page scrolling.
+        if (footer) footer.style.display = "none";
+
+        requestAnimationFrame(() => {
+          expanded.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
       });
-
-      if (arrow) arrow.textContent = "↓";
-
-      // If there is nothing beyond the preview, the control adds no value.
-      const remainingCount = expandedItems.filter(el => !el.classList.contains("cg-preview-duplicate")).length;
-      if (remainingCount === 0 && footer) footer.style.display = "none";
     });
   }
 
