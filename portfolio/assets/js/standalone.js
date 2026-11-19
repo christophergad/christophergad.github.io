@@ -96,7 +96,8 @@
     const message = event.data || {};
 
     if (message.type === "portfolioBridgeHello") {
-      window.postMessage({ type: "portfolioBridgeActive" }, "*");
+      // Standalone GitHub pages are not embedded in Wix.
+      // Intentionally do NOT activate the legacy Wix scroll bridge.
       return;
     }
 
