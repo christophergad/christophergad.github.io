@@ -3,6 +3,33 @@
 
   const BASE = "/portfolio";
 
+  // Standalone mode: block the legacy Wix iframe wheel listener before it runs.
+  // We intentionally do NOT call preventDefault(), so native browser scrolling remains intact.
+  window.addEventListener("wheel", event => {
+    if (!document.documentElement.classList.contains("cg-lightbox-open")) {
+      event.stopImmediatePropagation();
+    }
+  }, { capture: true, passive: true });
+
+  // Standalone mode: handle Wix-era route links before old inline handlers can
+  // post their original wixsite.com hrefs.
+  document.addEventListener("click", event => {
+    const link = event.target && event.target.closest
+      ? event.target.closest("a[data-wix-route]")
+      : null;
+    if (!link) return;
+
+    const route = link.getAttribute("data-wix-route");
+    if (!route) return;
+
+    // Preserve normal modified-click behavior; hrefs are rewritten below.
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    location.href = localRoute(route);
+  }, true);
+
   function localRoute(url) {
     if (!url) return BASE + "/";
     if (/^https?:\/\//i.test(url)) return url;
