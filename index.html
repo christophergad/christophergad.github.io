@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Chris Gad — Portfolio</title>
+<style>
+  /* =========================================================
+     QUICK SETUP — REPLACE THESE WITH YOUR WIX IMAGE URLs.
+     Keep the url("...") format.
+     ========================================================= */
+  :root {
+    --img-1001: none;
+    --img-blood: none;
+    --img-watchdogs: none;
+    --img-tombraider: none;
+    --img-deusex: none;
+    --img-thief: none;
+    --img-breach: none;
+    --img-unannounced: none;
+    --img-vegas: none;
+    --img-rio: none;
+    --img-asphalt: none;
+    --img-zombieland: none;
+    --img-acme: none;
+    --img-mesa: none;
+    --img-gordon: none;
+    --img-about: none;
+
+    --page: #f8f8f6;
+    --paper: #fbfbfa;
+    --ink: #171717;
+    --muted: #777772;
+    --faint: #aaa9a4;
+    --line: #d7d7d2;
+    --chip: #eeeeea;
+    --max: 1900px;
+    --number-col: 86px;
+    --gap: 34px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+
+  /* Full-width Wix embed: use the iframe width, with only editorial side padding. */
+  .site {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: clamp(28px, 4vw, 72px);
+    padding-right: clamp(28px, 4vw, 72px);
+  }
+
+  /* Header */
+  .site-header {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-name { font-size: 28px; font-weight: 400; letter-spacing: -0.035em; }
+  .brand-role { margin-top: 3px; color: var(--muted); font-size: 13px; }
+  .nav { display: flex; align-items: center; gap: 40px; font-size: 12px; text-transform: uppercase; letter-spacing: .02em; }
+  .nav a { opacity: .76; }
+  .nav a:hover { opacity: 1; }
+  .nav .resume-download { background: var(--ink); color: white; padding: 12px 22px; opacity: 1; }
+
+  /* Shared section alignment */
+  .section {
+    display: grid;
+    grid-template-columns: var(--number-col) minmax(0, 1fr);
+    column-gap: var(--gap);
+    padding: 30px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-index { padding-top: 2px; }
+  .section-index .num { font-size: 36px; line-height: 1; font-weight: 300; color: #9b9b96; letter-spacing: -0.05em; }
+  .section-index .label { margin-top: 9px; font-size: 10px; line-height: 1.35; text-transform: uppercase; color: var(--faint); }
+  .section-body { min-width: 0; }
+
+  /* Hero */
+  .hero { padding-top: 24px; padding-bottom: 34px; }
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 31% minmax(0, 1fr);
+    gap: 44px;
+    align-items: stretch;
+  }
+  .hero-copy { padding: 18px 0 12px; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; font-size: 9px; text-transform: uppercase; color: var(--faint); }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: #9f9f9a; }
+  .hero h1 {
+    margin: 0;
+    max-width: 310px;
+    font-size: clamp(54px, 4.6vw, 78px);
+    line-height: .98;
+    font-weight: 300;
+    letter-spacing: -0.055em;
+  }
+  .hero-copy p { margin: 24px 0 26px; max-width: 390px; color: #676762; font-size: 15px; line-height: 1.55; }
+  .button {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 18px;
+    background: var(--ink);
+    color: #fff;
+    padding: 13px 18px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    border: 1px solid var(--ink);
+    transition: .18s ease;
+  }
+  .button:hover { background: transparent; color: var(--ink); }
+  .button.secondary { background: transparent; color: var(--ink); }
+  .button.secondary:hover { background: var(--ink); color: #fff; }
+
+  .hero-art {
+    position: relative;
+    min-height: 430px;
+    overflow: hidden;
+    background-image:
+      linear-gradient(90deg, rgba(10,10,10,.45) 0%, rgba(10,10,10,.02) 48%, rgba(10,10,10,.18) 100%),
+      var(--img-1001),
+      linear-gradient(135deg, #d7c3a2 0%, #bf8f5e 45%, #6e5a4e 100%);
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-card {
+    position: absolute;
+    left: 28px;
+    bottom: 26px;
+    color: #fff;
+    max-width: 450px;
+  }
+  .hero-card .small { font-size: 10px; text-transform: uppercase; opacity: .78; margin-bottom: 5px; }
+  .hero-card h2 { margin: 0 0 7px; font-size: 44px; line-height: 1; font-weight: 300; letter-spacing: -0.035em; }
+  .hero-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; text-transform: uppercase; opacity: .92; }
+  .hero-arrow {
+    position: absolute; right: 22px; bottom: 22px; width: 46px; height: 46px; border: 1px solid rgba(255,255,255,.85); border-radius: 50%;
+    display: grid; place-items: center; color: #fff; font-size: 22px;
+  }
+
+  /* Section headers */
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 14px; }
+  .section-head h2 { margin: 0; font-size: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: .01em; }
+  .section-head p, .section-head a { margin: 0; color: var(--muted); font-size: 11px; }
+
+  /* Cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 16px; }
+  .project { min-width: 0; }
+  .media {
+    position: relative;
+    aspect-ratio: 16/8.6;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border: 1px solid #deded9;
+  }
+  .media::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.28) 100%); }
+  .media .round-arrow {
+    position: absolute; right: 12px; bottom: 12px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,.9); color: #fff;
+    display: grid; place-items: center; font-size: 15px; transition: .18s ease;
+  }
+  .project:hover .round-arrow { transform: translateX(3px); }
+  .project-title { margin-top: 11px; font-size: 20px; line-height: 1.05; font-weight: 400; letter-spacing: -0.02em; }
+  .grid-4 .project-title { font-size: 15px; }
+  .grid-5 .project-title { font-size: 14px; }
+  .project-meta { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.35; text-transform: uppercase; }
+  .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 9px; }
+  .chip { border: 1px solid #d9d9d5; background: rgba(255,255,255,.38); padding: 5px 9px; font-size: 9px; text-transform: uppercase; color: #777772; }
+
+  .blood .media { background-image: var(--img-blood), linear-gradient(135deg,#433b35,#7f664f); }
+  .watchdogs .media { background-image: var(--img-watchdogs), linear-gradient(135deg,#17243b,#9e3d66); }
+  .tombraider .media { background-image: var(--img-tombraider), linear-gradient(135deg,#43514b,#917d4c); }
+  .deusex .media { background-image: var(--img-deusex), linear-gradient(135deg,#5c4c35,#b2894d); }
+  .thief .media { background-image: var(--img-thief), linear-gradient(135deg,#1f2b35,#526675); }
+  .breach .media { background-image: var(--img-breach), linear-gradient(135deg,#3d3d59,#8a78a5); }
+  .unannounced .media { background-image: var(--img-unannounced), linear-gradient(135deg,#a57f60,#5d6675); }
+  .unannounced-pvp .media { background-image: var(--img-unannounced-pvp), linear-gradient(135deg,#3d4654,#707d8c); }
+  .vegas .media { background-image: var(--img-vegas), linear-gradient(135deg,#886044,#c19b6a); }
+  .rio .media { background-image: var(--img-rio), linear-gradient(135deg,#2f5669,#a36946); }
+  .asphalt .media { background-image: var(--img-asphalt), linear-gradient(135deg,#6b405d,#d65f91); }
+  .zombieland .media { background-image: var(--img-zombieland), linear-gradient(135deg,#2e5063,#d06742); }
+  .acme .media { background-image: var(--img-acme), linear-gradient(135deg,#537e67,#8e7951); }
+  .mesa .media { background-image: var(--img-mesa), linear-gradient(135deg,#38424d,#59656f); }
+  .gordon .media { background-image: var(--img-gordon), linear-gradient(135deg,#4f5255,#969696); }
+
+  /* At a glance */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .stat { padding: 2px 30px 2px 0; }
+  .stat + .stat { border-left: 1px solid var(--line); padding-left: 30px; }
+  .stat-value { font-size: 46px; line-height: 1; font-weight: 300; letter-spacing: -0.05em; }
+  .stat-title { margin-top: 11px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+  .stat-copy { margin-top: 9px; color: var(--muted); font-size: 13px; line-height: 1.45; max-width: 190px; }
+
+  /* About */
+  .about-layout { display: grid; grid-template-columns: 42% minmax(0,1fr); gap: 44px; align-items: stretch; }
+  .portrait {
+    min-height: 360px;
+    background-image: var(--img-about), linear-gradient(135deg,#dadad7,#a3a3a0);
+    background-size: cover;
+    background-position: center top;
+    border: 1px solid #deded9;
+  }
+  .about-copy { display: flex; flex-direction: column; justify-content: center; padding: 10px 0; }
+  .about-copy h2 { margin: 0; max-width: 620px; font-size: 40px; line-height: 1.02; font-weight: 300; letter-spacing: -0.04em; text-transform: uppercase; }
+  .about-copy p { max-width: 760px; margin: 18px 0 24px; color: #666661; font-size: 14px; line-height: 1.55; }
+  .button-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Footer */
+  .footer {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-nav { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+
+  @media (max-width: 1250px) {
+    .site { padding-left: 28px; padding-right: 28px; }
+    .hero h1 { font-size: clamp(46px, 5vw, 66px); }
+    .hero-art { min-height: 390px; }
+    .project-title { font-size: 17px; }
+    .grid-4 .project-title { font-size: 13px; }
+    .grid-5 .project-title { font-size: 12px; }
+  }
+
+  @media (max-width: 900px) {
+    .site { padding-left: 20px; padding-right: 20px; }
+    .nav { gap: 18px; }
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero h1 { max-width: 560px; }
+    .hero-art { min-height: 360px; }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-5 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px 14px; }
+    .about-layout { grid-template-columns: 1fr 1.15fr; gap: 26px; }
+  }
+
+  @media (max-width: 680px) {
+    .site { padding-left: 14px; padding-right: 14px; }
+    .site-header { min-height: 68px; }
+    .nav a:not(.resume-download) { display: none; }
+    .nav .resume-download { padding: 10px 14px; }
+    .section { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
+    .section-index { display: flex; align-items: baseline; gap: 12px; }
+    .section-index .num { font-size: 25px; }
+    .section-index .label { margin: 0; }
+    .hero { padding-top: 10px; }
+    .hero-layout { gap: 20px; }
+    .hero-copy { padding-top: 4px; }
+    .hero h1 { font-size: 44px; max-width: 320px; }
+    .hero-art { min-height: 330px; }
+    .hero-card { left: 20px; bottom: 20px; max-width: 78%; }
+    .hero-card h2 { font-size: 29px; }
+    .grid-3 { grid-template-columns: 1fr; gap: 22px; }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px 12px; }
+    .grid-5 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px 12px; }
+    .project-title { font-size: 15px; }
+    .stats { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 0; }
+    .stat:nth-child(3) { border-left: none; padding-left: 0; }
+    .stat-value { font-size: 34px; }
+    .about-layout { grid-template-columns: 1fr; gap: 20px; }
+    .portrait { min-height: 330px; }
+    .about-copy h2 { font-size: 28px; }
+    .footer { align-items: flex-end; gap: 20px; }
+    .footer-nav { gap: 15px; flex-wrap: wrap; justify-content: flex-end; }
+  }
+
+  /* PATCH 19 — resume title fit */
+  .brand-role{
+    font-size:12px !important;
+    line-height:1.25;
+  }
+</style>
+<link rel="stylesheet" href="/assets/css/standalone.css"/>
+</head>
+<body>
+<div class="site">
+<header class="site-header">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<nav class="nav">
+<a class="resume-download" data-link="resume" href="#">Download Resume</a>
+</nav>
+</header>
+<!-- 01 INTRODUCTION -->
+<section class="section hero" id="top">
+<div class="section-index"><div class="num">01</div><div class="label">Introduction</div></div>
+<div class="section-body hero-layout">
+<div class="hero-copy">
+<div class="eyebrow">Portfolio</div>
+<h1>DESIGNING<br/>MEMORABLE<br/>WORLDS</h1>
+<p>Hands-on level and mission designer with 16+ years of AAA experience across narrative action-adventure, open worlds and complex encounters. I own playable content from paper design and blockout through scripting, playtesting and polish, with strengths in encounter pacing, player guidance, combat metrics and systemic gameplay. I also apply AI professionally to mission planning, spatial exploration and technical prototyping.</p>
+<a class="button" href="#work">View my work <span>→</span></a>
+</div>
+<!-- Replace href with your existing 1001 Wix page URL -->
+<a aria-label="1001 Threads of Mizan" class="hero-art" data-project="1001" href="#" target="_top">
+<div class="hero-card">
+<div class="small">Current Project</div>
+<h2>1001 THREADS<br/>OF MIZAN</h2>
+<div class="hero-meta"><span>MBC Game Studio</span><span>|</span><span>Senior Mission Designer</span></div>
+</div>
+<div class="hero-arrow">→</div>
+</a>
+</div>
+</section>
+<!-- 02 SELECTED WORK -->
+<section class="section" id="work">
+<div class="section-index"><div class="num">02</div><div class="label">Selected Work</div></div>
+<div class="section-body">
+<div class="grid-3">
+<!-- Replace each href with the existing Wix project page URL -->
+<a class="project blood" data-project="blood" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">BLOOD MESSAGE</div>
+<div class="project-meta">Highdive / NetEase Thunderfire · Lead / Expert Level Designer · 2021—2025</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Historical</span><span class="chip">Narrative Action-Adventure</span></div>
+</a>
+<a class="project watchdogs" data-project="watchdogs" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">WATCH DOGS: LEGION</div>
+<div class="project-meta">Ubisoft Montréal · Senior Level Designer · 2016—2020</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Open World</span><span class="chip">Multiplayer</span></div>
+</a>
+<a class="project tombraider" data-project="tombraider" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">SHADOW OF THE TOMB RAIDER</div>
+<div class="project-meta">Eidos Montréal · Level Designer · 2012—2016</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Action Adventure</span><span class="chip">Narrative</span></div>
+</a>
+</div>
+</div>
+</section>
+<!-- 03 MORE AAA WORK -->
+<section class="section">
+<div class="section-index"><div class="num">03</div><div class="label">More AAA Work</div></div>
+<div class="section-body">
+<div class="grid-3">
+<a class="project deusex" data-project="deusex" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">DEUS EX: MANKIND DIVIDED</div>
+<div class="project-meta">Eidos Montréal · Level Designer</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Immersive Sim</span><span class="chip">Narrative Stealth</span></div>
+</a>
+<a class="project thief" data-project="thief" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">THIEF</div>
+<div class="project-meta">Eidos Montréal · Level Designer</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Stealth</span><span class="chip">Narrative</span></div>
+</a>
+<a class="project breach" data-project="breach" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">DEUS EX: BREACH</div>
+<div class="project-meta">Eidos Montréal · Level Designer</div>
+<div class="chips"><span class="chip">Multiplayer</span><span class="chip">Asymmetrical</span><span class="chip">Prototype</span></div>
+</a>
+</div>
+</div>
+</section>
+<!-- 04 MOBILE + UNANNOUNCED -->
+<section class="section">
+<div class="section-index"><div class="num">04</div><div class="label">Mobile +<br/>Unannounced</div></div>
+<div class="section-body">
+<div class="grid-5">
+<a class="project unannounced" data-project="unannounced" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">UNANNOUNCED PROJECT</div><div class="project-meta">Eidos Montréal · Principal Level Designer</div><div class="chips"><span class="chip">AAA</span><span class="chip">Open World</span><span class="chip">Unannounced</span></div></a>
+<a class="project unannounced-pvp" data-project="unannounced-pvp" href="#" target="_top">
+<div class="media"><span class="round-arrow">→</span></div>
+<div class="project-title">UNANNOUNCED PVP / PVE OPEN WORLD FPS</div>
+<div class="project-meta">Ubisoft Montréal · Senior Level Designer</div>
+<div class="chips"><span class="chip">AAA</span><span class="chip">Open World</span><span class="chip">PVP / PVE</span></div>
+</a>
+<a class="project vegas" data-project="vegas" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">GANGSTAR VEGAS</div><div class="project-meta">Gameloft · Level Designer</div><div class="chips"><span class="chip">Mobile</span><span class="chip">Open World</span><span class="chip">Action</span></div></a>
+<a class="project rio" data-project="rio" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">GANGSTAR RIO</div><div class="project-meta">Gameloft · Level Designer</div><div class="chips"><span class="chip">Mobile</span><span class="chip">Open World</span><span class="chip">Action</span></div></a>
+<a class="project asphalt" data-project="asphalt" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">ASPHALT 6: ADRENALINE</div><div class="project-meta">Gameloft · Level Designer</div><div class="chips"><span class="chip">Mobile</span><span class="chip">Racing</span><span class="chip">Action</span></div></a>
+</div>
+</div>
+</section>
+<!-- 05 PERSONAL + SCHOOL -->
+<section class="section">
+<div class="section-index"><div class="num">05</div><div class="label">Personal +<br/>School Projects</div></div>
+<div class="section-body">
+<div class="grid-4">
+<a class="project zombieland" data-project="zombieland" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">FORTNITE × ZOMBIELAND</div><div class="project-meta">Personal Project</div><div class="chips"><span class="chip">Level Design</span><span class="chip">Environment</span><span class="chip">Gameplay</span></div></a>
+<a class="project acme" data-project="acme" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">ACME TV</div><div class="project-meta">Final Project · Level Design</div><div class="chips"><span class="chip">Level Design</span><span class="chip">Environment</span><span class="chip">Lighting</span></div></a>
+<a class="project mesa" data-project="mesa" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">HALF-LIFE 2 — MESA BREACH</div><div class="project-meta">School Project</div><div class="chips"><span class="chip">Level Design</span><span class="chip">Mod</span><span class="chip">Environment</span></div></a>
+<a class="project gordon" data-project="gordon" href="#" target="_top"><div class="media"><span class="round-arrow">→</span></div><div class="project-title">HALF-LIFE 2 — GORDON FREEDOM</div><div class="project-meta">School Project</div><div class="chips"><span class="chip">Level Design</span><span class="chip">Mod</span><span class="chip">Narrative</span></div></a>
+</div>
+</div>
+</section>
+<!-- 06 AT A GLANCE -->
+<section class="section">
+<div class="section-index"><div class="num">06</div><div class="label">At a Glance</div></div>
+<div class="section-body stats">
+<div class="stat"><div class="stat-value">16+</div><div class="stat-title">Years of Experience</div><div class="stat-copy">Level and mission design across major productions.</div></div>
+<div class="stat"><div class="stat-value">14</div><div class="stat-title">Professional Projects</div><div class="stat-copy">Shipped, announced and prototype work across multiple platforms.</div></div>
+<div class="stat"><div class="stat-value">AAA</div><div class="stat-title">PC / Console / Mobile</div><div class="stat-copy">Experience across leading platforms and business models.</div></div>
+<div class="stat"><div class="stat-value">6+</div><div class="stat-title">Shipped Franchises</div><div class="stat-copy">From open world to linear, stealth to multiplayer.</div></div>
+</div>
+</section>
+<!-- 07 ABOUT -->
+<section class="section" id="about">
+<div class="section-index"><div class="num">07</div><div class="label">About</div></div>
+<div class="section-body about-layout">
+<div aria-label="Chris Gad portrait" class="portrait" role="img"></div>
+<div class="about-copy">
+<h2>A Designer of<br/>Worlds and Experiences</h2>
+<p>I’m a hands-on level and mission designer with 16+ years of experience across narrative action-adventure, open worlds and complex encounters. My work spans concept, blockout, scripting, playtesting and polished playable delivery, with a focus on player guidance, combat spaces, enemy setups and difficulty targets. I collaborate closely across art, design and engineering, mentor other designers, and use AI professionally for mission planning, spatial exploration and technical prototyping.</p>
+<div class="button-row">
+<!-- Replace # with your resume/PDF URL -->
+<a class="button" data-link="resume" href="#" target="_top">Download Resume <span>→</span></a>
+<a class="button secondary" data-link="linkedin" href="#">View LinkedIn <span>↗</span></a>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<div class="footer-nav">
+<a data-link="resume" href="#">Download Resume</a>
+<a data-link="linkedin" href="#">LinkedIn</a>
+</div>
+</footer><div style="height:25px;"></div>
+<div style="width:100%; height:1px; background:lightgrey;"></div>
+</div>
+<script>
+/* ============================================================
+   EASY SETUP
+   Replace only the values inside the quotation marks below.
+   Leave a value blank ("") if you are not ready to add it yet.
+   ============================================================ */
+
+const CONFIG = {
+  images: {
+    "1001":        "https://static.wixstatic.com/media/0280ad_cb303a48f9974b8eae1a9cd5361fc73c~mv2.jpg",
+    "blood":       "https://static.wixstatic.com/media/0280ad_968b16668bed4303a7b9be330e164d76~mv2.jpg",
+    "watchdogs":   "https://static.wixstatic.com/media/0280ad_d0b843e92ca64cb0898d5c8dd249ecbb~mv2.jpg",
+    "tombraider":  "https://static.wixstatic.com/media/0280ad_2dceaccbe6254e2b95e61334b719ac86~mv2.jpg",
+    "deusex":      "https://static.wixstatic.com/media/0280ad_7c44d5b7a1a44601aa906beaf5f17ff5~mv2.jpg",
+    "thief":       "https://static.wixstatic.com/media/0280ad_601b2ee3e1b1459897b886d22c741839~mv2.jpg",
+    "breach":      "https://static.wixstatic.com/media/0280ad_1eb35060ab8a4d948a25a6461b5ecb1d~mv2.jpg",
+    "unannounced": "https://static.wixstatic.com/media/0280ad_8a0ead318766497396bfc98184b8e974~mv2.jpg",
+    "unannounced-pvp": "https://static.wixstatic.com/media/0280ad_3d1e91e810924d56b25a1cc9fa8845c2~mv2.jpg",
+    "vegas":       "https://static.wixstatic.com/media/0280ad_bbfaa8bbdba44f35a9a6689115c4c3fb~mv2.png",
+    "rio":         "https://static.wixstatic.com/media/0280ad_54a589edff684b9a801f808c3ec42e40~mv2.png",
+    "asphalt":     "https://static.wixstatic.com/media/0280ad_7450ee379fc74cd59fc849bac19efb6c~mv2.png",
+    "zombieland":  "https://static.wixstatic.com/media/0280ad_9c3e23312f254968b65d9fd1e6e7e73d~mv2.jpg",
+    "acme":        "https://static.wixstatic.com/media/0280ad_41542e5222f84b3789f964304463e8dc~mv2.jpg",
+    "mesa":        "https://static.wixstatic.com/media/0280ad_5b75907336694d7eb8878eea20b5362d~mv2.jpg",
+    "gordon":      "https://static.wixstatic.com/media/0280ad_1a54f23983a04479a40c68d0665ce682~mv2.jpg",
+    "about":       "https://static.wixstatic.com/media/0280ad_b157ebb1da0e4a9ea4ec3cf1c2ff1187~mv2.jpg"
+  },
+
+  links: {
+    "1001":        "/1001-threads-of-mizan",
+    "blood":       "/blood-message",
+    "watchdogs":   "/watchdogs-legion",
+    "tombraider":  "/shadow-tomb-raider",
+    "deusex":      "/deus-ex-mankind-divided",
+    "thief":       "/thief",
+    "breach":      "/deus-ex-breach",
+    "unannounced": "/unreleased-open-world-fantasy-rpg",
+    "unannounced-pvp": "/unreleased-pvp-pve-open-world-fps",
+    "vegas":       "/gangstar-vegas",
+    "rio":         "/gangstar-rio",
+    "asphalt":     "/asphalt-6-adrenaline",
+    "zombieland":  "/fortnite-zombieland",
+    "acme":        "/acme-tv",
+    "mesa":        "/hl2-mesa-breach",
+    "gordon":      "/hl2-gordon-freedom"
+  },
+
+  resume:   "https://0280ad4f-339b-406b-b50f-32dca5251a14.usrfiles.com/ugd/0280ad_f685989048a849a0a076404b09ea0107.pdf",
+  linkedin: "https://www.linkedin.com/in/chrisgad/"
+};
+
+/* Apply image URLs */
+for (const [key, url] of Object.entries(CONFIG.images)) {
+  if (url && url.trim()) {
+    document.documentElement.style.setProperty(
+      `--img-${key}`,
+      `url("${url.trim().replace(/"/g, '\\"')}")`
+    );
+  }
+}
+
+/* Wix navigation bridge
+   Project and resume links send a message to the Wix page.
+   The Wix page code then performs the actual navigation. */
+function requestWixNavigation(url) {
+  if (!url || !url.trim()) return;
+  window.parent.postMessage({
+    type: "navigate",
+    url: url.trim()
+  }, "*");
+}
+
+document.querySelectorAll("[data-project]").forEach(el => {
+  const url = CONFIG.links[el.dataset.project];
+
+  if (url && url.trim()) {
+    el.href = url.trim();
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      requestWixNavigation(url);
+    });
+  } else {
+    el.addEventListener("click", e => e.preventDefault());
+  }
+});
+
+document.querySelectorAll('[data-link="resume"]').forEach(el => {
+  if (CONFIG.resume && CONFIG.resume.trim()) {
+    el.href = CONFIG.resume.trim();
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      requestWixNavigation(CONFIG.resume);
+    });
+  } else {
+    el.addEventListener("click", e => e.preventDefault());
+  }
+});
+
+/* LinkedIn navigation is handed to Wix so it opens outside the HTML iframe. */
+document.querySelectorAll('[data-link="linkedin"]').forEach(el => {
+  if (CONFIG.linkedin && CONFIG.linkedin.trim()) {
+    const url = CONFIG.linkedin.trim();
+
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      window.parent.postMessage({
+        type: "externalNavigate",
+        url: url
+      }, "*");
+    });
+  } else {
+    el.addEventListener("click", e => e.preventDefault());
+  }
+});
+</script>
+
+<script>
+/* PATCH 26.8 — universal Wix HTML-component history/scroll bridge.
+   Uses a handshake so wheel input is intercepted only when the Wix page
+   confirms its message listener is alive. This avoids hard-locks after
+   browser back/forward restoration while removing unreliable iframe
+   scroll chaining when the bridge is active. */
+(function(){
+  if(window.__cgUniversalWixBridgeV3) return;
+  window.__cgUniversalWixBridgeV3 = true;
+
+  let bridgeActive = false;
+
+  function postToWix(message){
+    try{ window.parent.postMessage(message, "*"); }catch(e){}
+  }
+
+  function announceBridge(){
+    bridgeActive = false;
+    try{
+      if("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0,0);
+    }catch(e){}
+
+    postToWix({type:"portfolioBridgeHello"});
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },250);
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },900);
+  }
+
+  window.addEventListener("message", event=>{
+    if(event?.data?.type === "portfolioBridgeActive") bridgeActive = true;
+  });
+
+  window.addEventListener("pageshow", announceBridge);
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", announceBridge, {once:true});
+  }else{
+    setTimeout(announceBridge,0);
+  }
+
+  window.addEventListener("wheel", event=>{
+    if(!bridgeActive || event.ctrlKey || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
+
+    let deltaY = event.deltaY;
+    if(event.deltaMode === 1) deltaY *= 16;
+    else if(event.deltaMode === 2) deltaY *= window.innerHeight;
+
+    event.preventDefault();
+    postToWix({type:"portfolioScroll", deltaY});
+  },{passive:false});
+})();
+</script>
+<script src="/assets/js/standalone.js"></script>
+</body>
+</html>
