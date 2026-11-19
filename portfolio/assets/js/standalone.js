@@ -60,30 +60,42 @@
     location.href = localRoute(url);
   }
 
-  let overlay, imageEl, prevBtn, nextBtn, counter;
-  let images = [], index = 0;
+  let overlay, imageEl, prevBtn, nextBtn, counter, thumbnailsEl, lightboxContent;
+  let images = [], imageAlts = [], index = 0, galleryBrowserMode = false;
 
   function ensureLightbox() {
     if (overlay) return;
     overlay = document.createElement("div");
     overlay.className = "cg-standalone-lightbox";
     overlay.innerHTML = `
-      <button class="cg-lightbox-close" aria-label="Close image">×</button>
-      <button class="cg-lightbox-nav cg-lightbox-prev" aria-label="Previous image">‹</button>
-      <figure class="cg-lightbox-figure">
-        <img class="cg-lightbox-image" alt="Project image">
-        <figcaption class="cg-lightbox-counter"></figcaption>
-      </figure>
-      <button class="cg-lightbox-nav cg-lightbox-next" aria-label="Next image">›</button>`;
+      <div class="cg-lightbox-content" role="dialog" aria-modal="true" aria-label="Project image gallery">
+        <button class="cg-lightbox-close" aria-label="Close image">×</button>
+        <div class="cg-lightbox-viewer">
+          <button class="cg-lightbox-nav cg-lightbox-prev" aria-label="Previous image">‹</button>
+          <figure class="cg-lightbox-figure">
+            <img class="cg-lightbox-image" alt="Project image">
+            <figcaption class="cg-lightbox-counter"></figcaption>
+          </figure>
+          <button class="cg-lightbox-nav cg-lightbox-next" aria-label="Next image">›</button>
+        </div>
+        <div class="cg-lightbox-thumbnails" aria-label="All gallery images"></div>
+      </div>`;
     document.body.appendChild(overlay);
+
+    lightboxContent = overlay.querySelector(".cg-lightbox-content");
     imageEl = overlay.querySelector(".cg-lightbox-image");
     prevBtn = overlay.querySelector(".cg-lightbox-prev");
     nextBtn = overlay.querySelector(".cg-lightbox-next");
     counter = overlay.querySelector(".cg-lightbox-counter");
+    thumbnailsEl = overlay.querySelector(".cg-lightbox-thumbnails");
+
     overlay.querySelector(".cg-lightbox-close").onclick = closeLightbox;
-    overlay.addEventListener("click", e => { if (e.target === overlay) closeLightbox(); });
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) closeLightbox();
+    });
     prevBtn.onclick = () => show(index - 1);
     nextBtn.onclick = () => show(index + 1);
+
     document.addEventListener("keydown", e => {
       if (!overlay.classList.contains("is-open")) return;
       if (e.key === "Escape") closeLightbox();
@@ -92,31 +104,86 @@
     });
   }
 
+  function renderGalleryThumbnails() {
+    ensureLightbox();
+    thumbnailsEl.innerHTML = "";
+
+    if (!galleryBrowserMode || images.length <= 1) {
+      thumbnailsEl.hidden = true;
+      overlay.classList.remove("is-gallery-browser");
+      return;
+    }
+
+    overlay.classList.add("is-gallery-browser");
+    thumbnailsEl.hidden = false;
+
+    images.forEach((url, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "cg-lightbox-thumb";
+      btn.setAttribute("aria-label", `View image ${i + 1} of ${images.length}`);
+      btn.innerHTML = `<img src="${url}" alt="">`;
+      btn.addEventListener("click", () => {
+        show(i);
+        requestAnimationFrame(() => {
+          overlay.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+      thumbnailsEl.appendChild(btn);
+    });
+  }
+
+  function updateSelectedThumbnail() {
+    if (!thumbnailsEl || thumbnailsEl.hidden) return;
+    thumbnailsEl.querySelectorAll(".cg-lightbox-thumb").forEach((btn, i) => {
+      btn.classList.toggle("is-selected", i === index);
+      btn.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+  }
+
   function show(nextIndex) {
     ensureLightbox();
     if (!images.length) return;
     index = (nextIndex + images.length) % images.length;
     imageEl.src = images[index];
-    imageEl.alt = `Project image ${index + 1} of ${images.length}`;
+    imageEl.alt = imageAlts[index] || `Project image ${index + 1} of ${images.length}`;
     counter.textContent = images.length > 1 ? `${index + 1} / ${images.length}` : "";
     prevBtn.hidden = nextBtn.hidden = images.length <= 1;
+    updateSelectedThumbnail();
     overlay.classList.add("is-open");
     document.documentElement.classList.add("cg-lightbox-open");
   }
 
-  function openLightbox(message) {
+  function openLightbox(message, browserMode = false) {
     images = Array.isArray(message.images) && message.images.length
       ? message.images.filter(Boolean)
       : [message.url].filter(Boolean);
+
+    imageAlts = Array.isArray(message.alts) && message.alts.length
+      ? message.alts
+      : images.map((_, i) => i === message.index ? (message.alt || "") : "");
+
     if (!images.length) return;
+
+    galleryBrowserMode = browserMode;
     const requested = Number.isInteger(message.index) ? message.index : images.indexOf(message.url);
+    renderGalleryThumbnails();
     show(requested < 0 ? 0 : requested);
+
+    requestAnimationFrame(() => {
+      overlay.scrollTop = 0;
+    });
   }
 
   function closeLightbox() {
     if (!overlay) return;
-    overlay.classList.remove("is-open");
+    overlay.classList.remove("is-open", "is-gallery-browser");
     document.documentElement.classList.remove("cg-lightbox-open");
+    galleryBrowserMode = false;
+    if (thumbnailsEl) {
+      thumbnailsEl.hidden = true;
+      thumbnailsEl.innerHTML = "";
+    }
   }
 
   window.addEventListener("message", event => {
@@ -150,7 +217,7 @@
     a.removeAttribute("target");
   });
 
-  function setupExpandableGalleries() {
+  function setupGalleryBrowsers() {
     document.querySelectorAll("[data-cg-expand]").forEach(oldBtn => {
       const key = oldBtn.getAttribute("data-cg-expand");
       if (!key) return;
@@ -158,61 +225,55 @@
       const expanded = document.querySelector('[data-cg-expanded="' + CSS.escape(key) + '"]');
       if (!expanded) return;
 
-      const footer = oldBtn.closest(".cg-gallery-footer");
-      const preview = footer && footer.previousElementSibling &&
-        footer.previousElementSibling.classList.contains("cg-gallery")
-          ? footer.previousElementSibling
-          : null;
+      const items = Array.from(expanded.querySelectorAll("[data-cg-image]"))
+        .map(el => {
+          const img = el.querySelector("img");
+          return {
+            url: (el.getAttribute("data-cg-image") || "").trim(),
+            alt: (img && img.alt) || "Project image"
+          };
+        })
+        .filter(item => item.url);
 
-      const expandedItems = Array.from(expanded.querySelectorAll("[data-cg-image]"));
-      if (!expandedItems.length) {
+      const footer = oldBtn.closest(".cg-gallery-footer");
+      if (!items.length) {
         if (footer) footer.style.display = "none";
         return;
       }
 
-      // Remove any listeners added by the old Wix-era gallery code.
+      // Keep the complete source gallery hidden on the page. It is now used only
+      // as the data source for the standalone gallery-browser lightbox.
+      expanded.setAttribute("hidden", "");
+      expanded.style.display = "none";
+
+      // Clone to remove any legacy Wix-era click listeners.
       const btn = oldBtn.cloneNode(true);
       oldBtn.replaceWith(btn);
 
-      expanded.removeAttribute("style");
-      expanded.setAttribute("hidden", "");
-
       const label = btn.querySelector("span:first-child");
       const arrow = btn.querySelector(".cg-gallery-arrow");
-
-      // Standardize the standalone control.
-      const originalText = label ? label.textContent.trim() : "";
-      const countMatch = originalText.match(/(\d+)/);
-      const countText = countMatch ? " " + countMatch[1] + " images" : " images";
-      if (label) label.textContent = "Browse all" + countText;
-      if (arrow) arrow.textContent = "↓";
-      btn.setAttribute("aria-expanded", "false");
+      if (label) label.textContent = `Browse all ${items.length} images`;
+      if (arrow) arrow.textContent = "→";
 
       btn.addEventListener("click", event => {
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        expanded.removeAttribute("hidden");
-        btn.setAttribute("aria-expanded", "true");
-
-        // The action is intentionally one-way: once the user asks to browse all,
-        // keep the complete gallery open for normal page scrolling.
-        if (footer) footer.style.display = "none";
-
-        requestAnimationFrame(() => {
-          expanded.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        });
+        openLightbox({
+          url: items[0].url,
+          alt: items[0].alt,
+          images: items.map(item => item.url),
+          alts: items.map(item => item.alt),
+          index: 0
+        }, true);
       });
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupExpandableGalleries, { once: true });
+    document.addEventListener("DOMContentLoaded", setupGalleryBrowsers, { once: true });
   } else {
-    setupExpandableGalleries();
+    setupGalleryBrowsers();
   }
 
 })();
