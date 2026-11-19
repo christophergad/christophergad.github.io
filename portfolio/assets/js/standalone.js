@@ -149,4 +149,84 @@
     a.href = localRoute(route);
     a.removeAttribute("target");
   });
+
+  function setupExpandableGalleries() {
+    document.querySelectorAll("[data-cg-expand]").forEach(oldBtn => {
+      const key = oldBtn.getAttribute("data-cg-expand");
+      if (!key) return;
+
+      const expanded = document.querySelector('[data-cg-expanded="' + CSS.escape(key) + '"]');
+      if (!expanded) return;
+
+      const footer = oldBtn.closest(".cg-gallery-footer");
+      const preview = footer && footer.previousElementSibling &&
+        footer.previousElementSibling.classList.contains("cg-gallery")
+          ? footer.previousElementSibling
+          : null;
+
+      const previewItems = preview
+        ? Array.from(preview.querySelectorAll("[data-cg-image]"))
+        : [];
+
+      const expandedItems = Array.from(expanded.querySelectorAll("[data-cg-image]"));
+
+      // Hide the images already visible in the 5-image preview so the expanded
+      // section adds only the remaining images instead of duplicating them.
+      const previewUrls = new Set(
+        previewItems.map(el => (el.getAttribute("data-cg-image") || "").trim()).filter(Boolean)
+      );
+
+      expandedItems.forEach(el => {
+        const url = (el.getAttribute("data-cg-image") || "").trim();
+        el.classList.toggle("cg-preview-duplicate", previewUrls.has(url));
+      });
+
+      // The Wix-era fixed gallery script cloned this control and attached its
+      // own paging listener. Clone once more to strip that listener completely.
+      const btn = oldBtn.cloneNode(true);
+      oldBtn.replaceWith(btn);
+
+      expanded.removeAttribute("style");
+      expanded.setAttribute("hidden", "");
+
+      const label = btn.querySelector("span:first-child");
+      const arrow = btn.querySelector(".cg-gallery-arrow");
+      const collapsedLabel = label ? label.textContent : "View all images";
+
+      btn.setAttribute("aria-expanded", "false");
+
+      btn.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        const opening = expanded.hasAttribute("hidden");
+
+        if (opening) {
+          expanded.removeAttribute("hidden");
+          btn.setAttribute("aria-expanded", "true");
+          if (label) label.textContent = "Show fewer";
+          if (arrow) arrow.textContent = "↑";
+        } else {
+          expanded.setAttribute("hidden", "");
+          btn.setAttribute("aria-expanded", "false");
+          if (label) label.textContent = collapsedLabel;
+          if (arrow) arrow.textContent = "↓";
+          if (preview) preview.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      if (arrow) arrow.textContent = "↓";
+
+      // If there is nothing beyond the preview, the control adds no value.
+      const remainingCount = expandedItems.filter(el => !el.classList.contains("cg-preview-duplicate")).length;
+      if (remainingCount === 0 && footer) footer.style.display = "none";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupExpandableGalleries, { once: true });
+  } else {
+    setupExpandableGalleries();
+  }
+
 })();
