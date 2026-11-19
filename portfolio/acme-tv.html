@@ -997,4 +997,1377 @@
 
 .next-feature-content{
   display:flex;
-  flex-direction:column;
+  flex-direction:column;  justify-content:center;
+  padding:42px 46px;
+  background:
+    linear-gradient(135deg,rgba(18,18,18,.98),rgba(25,25,25,.96));
+}
+
+.next-feature-kicker{
+  margin-bottom:14px;
+  color:rgba(255,255,255,.58);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.next-feature h2{
+  margin:0;
+  font-size:clamp(34px,3vw,52px);
+  line-height:1;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.next-feature-role{
+  margin-top:13px;
+  color:rgba(255,255,255,.70);
+  font-size:15px;
+}
+
+.next-feature-cta{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:44px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.next-feature-arrow{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:50%;
+  font-size:18px;
+  transition:.2s ease;
+}
+
+.next-feature:hover .next-feature-image{
+  transform:scale(1.018);
+}
+
+.next-feature:hover .next-feature-arrow{
+  background:#fff;
+  color:#171717;
+  border-color:#fff;
+}
+
+@media(max-width:900px){
+  .development-note{
+    grid-template-columns:130px 1fr;
+  }
+
+  .next-feature{
+    grid-template-columns:1.35fr .85fr;
+  }
+
+  .next-feature-content{
+    padding:34px;
+  }
+}
+
+@media(max-width:680px){
+  .project-closing{
+    padding:26px 0 30px;
+  }
+
+  .development-note{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding-bottom:24px;
+    margin-bottom:26px;
+  }
+
+  .development-note p{
+    font-size:14px;
+  }
+
+  .next-feature{
+    grid-template-columns:1fr;
+  }
+
+  .next-feature-image{
+    min-height:240px;
+  }
+
+  .next-feature-content{
+    padding:28px 24px 30px;
+  }
+
+  .next-feature-role{
+    font-size:14px;
+  }
+
+  .next-feature-cta{
+    margin-top:28px;
+  }
+}
+
+
+/* =========================================================
+   SINGLE-LINE DEVELOPMENT NOTES
+   Keep both public-development messages on one line at desktop widths.
+   ========================================================= */
+.hero-note{
+  max-width:none;
+  white-space:nowrap;
+}
+
+.development-note{
+  grid-template-columns:130px minmax(0,1fr);
+}
+
+.development-note p{
+  max-width:none;
+  white-space:nowrap;
+}
+
+@media(max-width:900px){
+  .hero-note,
+  .development-note p{
+    white-space:normal;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — BETTER USE OF LEFT-COLUMN WHITE SPACE
+   ========================================================= */
+.overview-block{
+  min-height:245px;
+}
+
+.overview-block:first-child{
+  display:flex;
+  align-items:center;
+}
+
+.overview-block:first-child .overview-copy{
+  max-width:690px;
+}
+
+/* On narrower layouts, return to normal top alignment. */
+@media(max-width:900px){
+  .overview-block:first-child{
+    display:block;
+  }
+
+  .overview-block:first-child .overview-copy{
+    max-width:760px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — REMOVE DEAD SPACE BESIDE INTRO PARAGRAPH
+   Bring the vertical divider closer and let the copy use the
+   full width of its column.
+   ========================================================= */
+.overview-grid{
+  grid-template-columns:
+    minmax(0,1.15fr)
+    minmax(300px,.72fr)
+    minmax(320px,.85fr);
+}
+
+.overview-block{
+  padding-right:26px;
+}
+
+.overview-block + .overview-block{
+  padding-left:26px;
+}
+
+.overview-block:first-child .overview-copy{
+  width:100%;
+  max-width:none;
+}
+
+@media(max-width:1250px){
+  .overview-grid{
+    grid-template-columns:
+      minmax(0,1.1fr)
+      minmax(280px,.78fr)
+      minmax(290px,.82fr);
+  }
+}
+
+@media(max-width:900px){
+  .overview-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .overview-block{
+    padding-right:24px;
+  }
+
+  .overview-block + .overview-block{
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — REBALANCED THREE-COLUMN LAYOUT
+   More breathing room for the intro copy, less dead space
+   between My Role and Project Details.
+   ========================================================= */
+.overview-grid{
+  grid-template-columns:
+    minmax(0,1.38fr)
+    minmax(255px,.58fr)
+    minmax(300px,.72fr);
+}
+
+.overview-block{
+  padding-right:30px;
+}
+
+.overview-block + .overview-block{
+  padding-left:30px;
+}
+
+.overview-block:first-child .overview-copy{
+  width:100%;
+  max-width:none;
+}
+
+@media(max-width:1250px){
+  .overview-grid{
+    grid-template-columns:
+      minmax(0,1.28fr)
+      minmax(245px,.62fr)
+      minmax(285px,.72fr);
+  }
+}
+
+@media(max-width:900px){
+  .overview-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .overview-block{
+    padding-right:24px;
+  }
+
+  .overview-block + .overview-block{
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — SMALL SPACING TWEAK
+   Add a little more breathing room between the intro copy
+   and the My Role column without changing the overall balance.
+   ========================================================= */
+.overview-block:first-child{
+  padding-right:42px;
+}
+
+.overview-block:nth-child(2){
+  padding-left:34px;
+}
+
+/* Keep the gap between My Role and Project Details tighter. */
+.overview-block:nth-child(3){
+  padding-left:26px;
+}
+
+@media(max-width:900px){
+  .overview-block:first-child{
+    padding-right:24px;
+  }
+
+  .overview-block:nth-child(2),
+  .overview-block:nth-child(3){
+    padding-left:24px;
+  }
+}
+
+
+/* =========================================================
+   OVERVIEW — DOUBLE GAP BETWEEN INTRO + MY ROLE
+   ========================================================= */
+.overview-block:first-child{
+  padding-right:84px;
+}
+
+.overview-block:nth-child(2){
+  padding-left:68px;
+}
+
+@media(max-width:1250px){
+  .overview-block:first-child{
+    padding-right:64px;
+  }
+
+  .overview-block:nth-child(2){
+    padding-left:52px;
+  }
+}
+
+@media(max-width:900px){
+  .overview-block:first-child{
+    padding-right:24px;
+  }
+
+  .overview-block:nth-child(2){
+    padding-left:24px;
+  }
+}
+
+
+  /* Standardized extensions while preserving the original 1001 template */
+  .direct-mosaic .shot{
+    background-image:none !important;
+  }
+  .direct-mosaic .shot img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .three-up{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .media-image-frame{
+    width:100%;
+    aspect-ratio:16/9;
+    background-size:cover;
+    background-position:center;
+    background-color:#171717;
+  }
+  @media(max-width:900px){
+    .three-up{grid-template-columns:1fr}
+  }
+
+
+  .source-empty-screenshots{
+    min-height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:34px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.22);
+    color:#7b7b76;
+    font-size:12px;
+    line-height:1.6;
+    text-align:center;
+  }
+
+
+  /* PATCH 12 — recovered legacy-gallery screenshots */
+  .recovered-gallery .shot{
+    appearance:none;
+    border:0;
+    padding:0;
+    margin:0;
+    cursor:zoom-in;
+    background:#171717;
+  }
+  .recovered-gallery .shot img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .recovered-gallery-footer{
+    display:flex;
+    justify-content:flex-end;
+    border-top:1px solid var(--line);
+    margin-top:14px;
+    padding-top:14px;
+  }
+  .recovered-view-all{
+    appearance:none;
+    border:0;
+    background:transparent;
+    padding:0;
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    color:#171717;
+    font:inherit;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+  .recovered-view-all:hover{opacity:.55}
+  .recovered-view-all .gallery-arrow{
+    font-size:17px;
+    line-height:1;
+    font-weight:400;
+  }
+  .recovered-expanded[hidden]{display:none !important}
+  .recovered-expanded{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  .recovered-expanded-item{
+    appearance:none;
+    border:0;
+    padding:0;
+    margin:0;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    background:#171717;
+    cursor:zoom-in;
+  }
+  .recovered-expanded-item img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .18s ease;
+  }
+  .recovered-expanded-item:hover img{transform:scale(1.01)}
+  @media(max-width:1000px){
+    .recovered-expanded{grid-template-columns:repeat(3,minmax(0,1fr))}
+  }
+  @media(max-width:680px){
+    .recovered-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+
+
+  /* =========================================================
+     PATCH 13 — stable gallery loading + custom video posters
+     ========================================================= */
+
+  .portfolio-gallery .shot,
+  .curated-mosaic .shot,
+  .recovered-gallery .shot{
+    background-image:none !important;
+    background:#171717 !important;
+  }
+
+  .portfolio-gallery .shot img,
+  .curated-mosaic .shot img,
+  .recovered-gallery .shot img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .video-frame{
+    background:#171717 !important;
+  }
+
+  .video-poster{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    border:0;
+    overflow:hidden;
+    background:#171717;
+    cursor:pointer;
+    color:#fff;
+  }
+
+  .video-poster img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+
+  .video-poster::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      0deg,
+      rgba(0,0,0,.24),
+      rgba(0,0,0,.04) 58%,
+      rgba(0,0,0,.08)
+    );
+    pointer-events:none;
+  }
+
+  .video-poster-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:2;
+    transform:translate(-50%,-50%);
+    width:66px;
+    height:66px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.72);
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 8px 28px rgba(0,0,0,.22);
+    transition:transform .18s ease, background .18s ease;
+  }
+
+  .video-poster-play::before{
+    content:"";
+    margin-left:4px;
+    width:0;
+    height:0;
+    border-top:9px solid transparent;
+    border-bottom:9px solid transparent;
+    border-left:15px solid #fff;
+  }
+
+  .video-poster:hover .video-poster-play{
+    transform:translate(-50%,-50%) scale(1.06);
+    background:rgba(0,0,0,.82);
+  }
+
+  .video-poster-label{
+    position:absolute;
+    z-index:2;
+    left:14px;
+    bottom:12px;
+    max-width:calc(100% - 28px);
+    padding:7px 9px;
+    background:rgba(0,0,0,.62);
+    color:rgba(255,255,255,.88);
+    font-size:9px;
+    line-height:1.25;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    pointer-events:none;
+  }
+
+  .video-frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+  }
+
+
+
+/* =========================================================
+   PATCH 15 — unified gallery + video layout
+   ========================================================= */
+.cg-gallery{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) !important;
+  gap:10px !important;
+  height:clamp(430px,43vw,620px) !important;
+  min-height:0 !important;
+}
+.cg-gallery-main,
+.cg-gallery-small .cg-gallery-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery-main img,
+.cg-gallery-small .cg-gallery-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.cg-gallery-small{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery.cg-count-2 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+}
+.cg-gallery.cg-count-3 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small .cg-gallery-item:last-child{
+  grid-column:1/-1;
+}
+.cg-gallery.cg-count-1{
+  grid-template-columns:1fr !important;
+}
+.cg-gallery.cg-count-1 .cg-gallery-small{
+  display:none;
+}
+.cg-gallery-footer{
+  display:flex;
+  justify-content:flex-end;
+  border-top:1px solid var(--line,#d9d9d4);
+  margin-top:14px;
+  padding-top:14px;
+}
+.cg-view-all{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  color:#171717;
+  font:inherit;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.cg-view-all:hover{opacity:.55}
+.cg-view-all .cg-gallery-arrow{
+  font-size:17px;
+  line-height:1;
+  font-weight:400;
+}
+.cg-expanded[hidden]{display:none !important}
+.cg-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line,#d9d9d4);
+}
+.cg-expanded-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+}
+.cg-expanded-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.video-grid{
+  gap:10px !important;
+}
+.video-grid.cg-video-count-1{
+  grid-template-columns:1fr !important;
+}
+.video-grid.cg-video-count-2,
+.video-grid.cg-video-count-4{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.video-grid.cg-video-count-3,
+.video-grid.cg-video-count-5,
+.video-grid.cg-video-count-6{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+@media(max-width:1000px){
+  .cg-expanded{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:760px){
+  .cg-gallery{
+    grid-template-columns:1fr !important;
+    height:auto !important;
+  }
+  .cg-gallery-main{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-gallery-small{
+    height:auto;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:repeat(2,150px) !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-small,
+  .cg-gallery.cg-count-3 .cg-gallery-small{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-item,
+  .cg-gallery.cg-count-3 .cg-gallery-item{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .video-grid,
+  .video-grid.cg-video-count-1,
+  .video-grid.cg-video-count-2,
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-4,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+  /* PATCH 19 — resume title fit */
+  .brand-role{
+    font-size:12px !important;
+    line-height:1.25;
+  }
+</style>
+<link rel="stylesheet" href="/portfolio/assets/css/standalone.css"/>
+</head>
+<body>
+<div class="site">
+<!-- =======================================================
+       CANONICAL LANDING-PAGE HEADER
+       ======================================================= -->
+<header class="site-header">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<nav class="nav">
+<a data-nav="home" href="#">Home</a>
+<a class="resume-download" data-nav="resume" href="#">Download Resume</a>
+</nav>
+</header>
+<!-- 01 / PROJECT -->
+<section class="project-hero" id="top">
+<div class="hero-content">
+<div class="section-heading">
+<span>01</span><span class="slash">/</span><span>Project</span>
+</div>
+<h1>ACME TV</h1>
+<div class="hero-role">Level Designer</div>
+<div class="hero-studio">Ubisoft Campus · Student Production</div>
+<div class="chip-row hero-chips"><span class="chip">Level Design</span><span class="chip">Exploration</span><span class="chip">Combat</span><span class="chip">Pacing</span><span class="chip">Storytelling</span><span class="chip">Student Project</span></div>
+</div>
+</section>
+<section class="project-section" id="overview">
+<div class="section-heading">
+<span>02</span><span class="slash">/</span><span>Overview</span>
+</div>
+<div class="overview-grid">
+<div class="overview-block">
+<p class="overview-copy">Final Project (Ubisoft Campus) – As part of a full student production simulating AAA development, I designed the game’s third level, drawing inspiration from the TV series Lost. The level featured dense jungle exploration, an underground base filled with secrets, a hidden submarine, and even encounters with polar bears, blending mystery and survival themes. I was responsible for the layout, pacing, combat and exploration flow, and environmental storytelling, ensuring my contribution fit seamlessly into the overall game progression while standing out as a memorable and immersive chapter.</p>
+</div>
+<div class="overview-block">
+<div class="mini-title">My Role</div>
+<div class="role-line">Level Designer</div>
+<div class="mini-title">Key Responsibilities</div>
+<ul class="responsibilities"><li>Level 3 design</li><li>Jungle exploration</li><li>Underground base</li><li>Combat flow</li><li>Exploration flow</li><li>Pacing</li><li>Environmental storytelling</li><li>Game progression integration</li></ul>
+</div>
+<div class="overview-block">
+<div class="mini-title">Project Details</div>
+<table class="detail-table"><tr><td>Context</td><td>Ubisoft Campus</td></tr><tr><td>Project</td><td>Acme TV</td></tr><tr><td>Role</td><td>Level Designer</td></tr><tr><td>Level</td><td>Level 3</td></tr><tr><td>Format</td><td>Student Production</td></tr></table>
+</div>
+</div>
+</section>
+<section class="project-section" id="design-focus">
+<div class="section-heading">
+<span>03</span><span class="slash">/</span><span>Design Focus</span>
+</div>
+<div class="focus-grid">
+<article class="focus-card one">
+<div class="focus-copy">
+<h3>Jungle Exploration</h3>
+<p>Designing dense jungle exploration inspired by Lost and leading players toward an underground base.</p>
+</div>
+</article>
+<article class="focus-card two">
+<div class="focus-copy">
+<h3>Combat &amp; Exploration Flow</h3>
+<p>Balancing layout, combat and exploration so the level supported progression while maintaining mystery.</p>
+</div>
+</article>
+<article class="focus-card three">
+<div class="focus-copy">
+<h3>Environmental Storytelling</h3>
+<p>Using spaces such as the hidden submarine, underground secrets and polar-bear encounters to create a memorable chapter.</p>
+</div>
+</article>
+</div>
+</section>
+<!-- 04 / PUBLIC MEDIA -->
+<section class="project-section" id="public-media">
+<div class="section-heading">
+<span>04</span><span class="slash">/</span><span>Public Media</span>
+</div>
+<div class="video-grid">
+<div>
+<div class="media-title">AcmeTv</div>
+<div class="video-frame" id="publicVideo1">
+<div class="video-placeholder">
+<div class="play-button">▶</div>
+<div class="video-helper">Loading video</div>
+</div>
+</div>
+</div>
+<div>
+<div class="media-title">News Report</div>
+<div class="video-frame" id="publicVideo2">
+<div class="video-placeholder"><div class="play-button">▶</div><div class="video-helper">Loading video</div></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 05 / SCREENSHOTS -->
+<section class="project-section" id="screenshots">
+<div class="section-heading">
+<span>05</span><span class="slash">/</span><span>Screenshots</span>
+</div><div class="cg-gallery cg-count-5"><button aria-label="Open Screenshots image 1" class="cg-gallery-main" data-cg-image="https://static.wixstatic.com/media/0280ad_00bdadcd7542428182f3c763d3e12760~mv2.jpg" type="button"><img alt="Screenshots image 1" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_00bdadcd7542428182f3c763d3e12760~mv2.jpg"/></button><div class="cg-gallery-small"><button aria-label="Open Screenshots image 2" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_f42fb2a69e0440e7ab5396f32adb49cc~mv2.jpg" type="button"><img alt="Screenshots image 2" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_f42fb2a69e0440e7ab5396f32adb49cc~mv2.jpg"/></button><button aria-label="Open Screenshots image 3" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a7430868bf944ba5a187c1d693953238~mv2.jpg" type="button"><img alt="Screenshots image 3" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_a7430868bf944ba5a187c1d693953238~mv2.jpg"/></button><button aria-label="Open Screenshots image 4" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a7aa646235af4f2794ced0c29daac016~mv2.jpg" type="button"><img alt="Screenshots image 4" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_a7aa646235af4f2794ced0c29daac016~mv2.jpg"/></button><button aria-label="Open Screenshots image 5" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_e96b3ab6433c466eb4bafd2702a8851b~mv2.jpg" type="button"><img alt="Screenshots image 5" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_e96b3ab6433c466eb4bafd2702a8851b~mv2.jpg"/></button></div></div><div class="cg-gallery-footer"><button class="cg-view-all" data-cg-expand="acme-tv-1" type="button"><span>View all 75 images</span><span class="cg-gallery-arrow">→</span></button></div><div class="cg-expanded" data-cg-expanded="acme-tv-1" hidden=""><button aria-label="Open Screenshots image 1" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_00bdadcd7542428182f3c763d3e12760~mv2.jpg" type="button"><img alt="Screenshots image 1" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_00bdadcd7542428182f3c763d3e12760~mv2.jpg"/></button><button aria-label="Open Screenshots image 2" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_f42fb2a69e0440e7ab5396f32adb49cc~mv2.jpg" type="button"><img alt="Screenshots image 2" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_f42fb2a69e0440e7ab5396f32adb49cc~mv2.jpg"/></button><button aria-label="Open Screenshots image 3" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a7430868bf944ba5a187c1d693953238~mv2.jpg" type="button"><img alt="Screenshots image 3" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a7430868bf944ba5a187c1d693953238~mv2.jpg"/></button><button aria-label="Open Screenshots image 4" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a7aa646235af4f2794ced0c29daac016~mv2.jpg" type="button"><img alt="Screenshots image 4" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a7aa646235af4f2794ced0c29daac016~mv2.jpg"/></button><button aria-label="Open Screenshots image 5" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_e96b3ab6433c466eb4bafd2702a8851b~mv2.jpg" type="button"><img alt="Screenshots image 5" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_e96b3ab6433c466eb4bafd2702a8851b~mv2.jpg"/></button><button aria-label="Open Screenshots image 6" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6c80fe0568074724a19935d63b786bfd~mv2.jpg" type="button"><img alt="Screenshots image 6" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_6c80fe0568074724a19935d63b786bfd~mv2.jpg"/></button><button aria-label="Open Screenshots image 7" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_ec9c087de4804f1c868f4d9e70375250~mv2.jpg" type="button"><img alt="Screenshots image 7" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_ec9c087de4804f1c868f4d9e70375250~mv2.jpg"/></button><button aria-label="Open Screenshots image 8" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_bc556c657be94735abb2711da465a56c~mv2.jpg" type="button"><img alt="Screenshots image 8" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_bc556c657be94735abb2711da465a56c~mv2.jpg"/></button><button aria-label="Open Screenshots image 9" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_1cebc39b2f574ef097c69d65075f5853~mv2.jpg" type="button"><img alt="Screenshots image 9" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_1cebc39b2f574ef097c69d65075f5853~mv2.jpg"/></button><button aria-label="Open Screenshots image 10" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_2ac134829e5d45c19dd0ca16cbbc060f~mv2.jpg" type="button"><img alt="Screenshots image 10" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_2ac134829e5d45c19dd0ca16cbbc060f~mv2.jpg"/></button><button aria-label="Open Screenshots image 11" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_3feffcc8edb14555979ea69a77eb90e7~mv2.jpg" type="button"><img alt="Screenshots image 11" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_3feffcc8edb14555979ea69a77eb90e7~mv2.jpg"/></button><button aria-label="Open Screenshots image 12" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_141f1a0f507c4b6785caf82ac6889848~mv2.jpg" type="button"><img alt="Screenshots image 12" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_141f1a0f507c4b6785caf82ac6889848~mv2.jpg"/></button><button aria-label="Open Screenshots image 13" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_2963dd93c8f54a43a24b7e4ee5c576f3~mv2.jpg" type="button"><img alt="Screenshots image 13" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_2963dd93c8f54a43a24b7e4ee5c576f3~mv2.jpg"/></button><button aria-label="Open Screenshots image 14" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_7ea4353202de4e749b95127b1a24bbaa~mv2.jpg" type="button"><img alt="Screenshots image 14" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_7ea4353202de4e749b95127b1a24bbaa~mv2.jpg"/></button><button aria-label="Open Screenshots image 15" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_9903818956d346e4bb0b83efb827a0c5~mv2.jpg" type="button"><img alt="Screenshots image 15" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_9903818956d346e4bb0b83efb827a0c5~mv2.jpg"/></button><button aria-label="Open Screenshots image 16" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_f101865d3367402e9778be8aa2ad5f63~mv2.jpg" type="button"><img alt="Screenshots image 16" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_f101865d3367402e9778be8aa2ad5f63~mv2.jpg"/></button><button aria-label="Open Screenshots image 17" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_e8ee04e30a8644c19f5ea89ae781da7f~mv2.jpg" type="button"><img alt="Screenshots image 17" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_e8ee04e30a8644c19f5ea89ae781da7f~mv2.jpg"/></button><button aria-label="Open Screenshots image 18" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_fdcb24b0fea44d99afe183730d7bde16~mv2.jpg" type="button"><img alt="Screenshots image 18" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_fdcb24b0fea44d99afe183730d7bde16~mv2.jpg"/></button><button aria-label="Open Screenshots image 19" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_9550acabfd0f4ef692f82fc4ddfea98a~mv2.jpg" type="button"><img alt="Screenshots image 19" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_9550acabfd0f4ef692f82fc4ddfea98a~mv2.jpg"/></button><button aria-label="Open Screenshots image 20" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_0c96c31e6fe8438ab0ad11abcd425fa0~mv2.jpg" type="button"><img alt="Screenshots image 20" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_0c96c31e6fe8438ab0ad11abcd425fa0~mv2.jpg"/></button><button aria-label="Open Screenshots image 21" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_91e3a95384fa4611b4184467e874d044~mv2.jpg" type="button"><img alt="Screenshots image 21" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_91e3a95384fa4611b4184467e874d044~mv2.jpg"/></button><button aria-label="Open Screenshots image 22" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_680f04147f4642bc98a7115e4f9c6ad9~mv2.jpg" type="button"><img alt="Screenshots image 22" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_680f04147f4642bc98a7115e4f9c6ad9~mv2.jpg"/></button><button aria-label="Open Screenshots image 23" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_c660672c1bd84818b7ed48ec5bf1907f~mv2.jpg" type="button"><img alt="Screenshots image 23" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_c660672c1bd84818b7ed48ec5bf1907f~mv2.jpg"/></button><button aria-label="Open Screenshots image 24" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a252c2d368d74501a41799d5dcef0d36~mv2.jpg" type="button"><img alt="Screenshots image 24" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a252c2d368d74501a41799d5dcef0d36~mv2.jpg"/></button><button aria-label="Open Screenshots image 25" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_30bbe77779684cc59ba34adc67b90e1d~mv2.jpg" type="button"><img alt="Screenshots image 25" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_30bbe77779684cc59ba34adc67b90e1d~mv2.jpg"/></button><button aria-label="Open Screenshots image 26" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_d0d3d5a7b0ee48d989d2bb8565136f2f~mv2.jpg" type="button"><img alt="Screenshots image 26" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_d0d3d5a7b0ee48d989d2bb8565136f2f~mv2.jpg"/></button><button aria-label="Open Screenshots image 27" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_8328c9b0a5d34aa4846c6ace0bba30b9~mv2.jpg" type="button"><img alt="Screenshots image 27" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_8328c9b0a5d34aa4846c6ace0bba30b9~mv2.jpg"/></button><button aria-label="Open Screenshots image 28" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_703778f2a5b547bf84efbececcae4e14~mv2.jpg" type="button"><img alt="Screenshots image 28" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_703778f2a5b547bf84efbececcae4e14~mv2.jpg"/></button><button aria-label="Open Screenshots image 29" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_72d7235e6f834adea7560f7894b83d4b~mv2.jpg" type="button"><img alt="Screenshots image 29" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_72d7235e6f834adea7560f7894b83d4b~mv2.jpg"/></button><button aria-label="Open Screenshots image 30" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_2caed64ffc5c4dc1a89861fdf84629b0~mv2.jpg" type="button"><img alt="Screenshots image 30" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_2caed64ffc5c4dc1a89861fdf84629b0~mv2.jpg"/></button><button aria-label="Open Screenshots image 31" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_252dc3ce863b4773bec4e4053e197dd5~mv2.jpg" type="button"><img alt="Screenshots image 31" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_252dc3ce863b4773bec4e4053e197dd5~mv2.jpg"/></button><button aria-label="Open Screenshots image 32" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_b45b6a44ca8b496aaef518c5fe6f53c1~mv2.jpg" type="button"><img alt="Screenshots image 32" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_b45b6a44ca8b496aaef518c5fe6f53c1~mv2.jpg"/></button><button aria-label="Open Screenshots image 33" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_68725f39d18744f1b3319b11ba8d0198~mv2.jpg" type="button"><img alt="Screenshots image 33" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_68725f39d18744f1b3319b11ba8d0198~mv2.jpg"/></button><button aria-label="Open Screenshots image 34" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_38e4f62c429d4dcd8f78a7798c3c2af1~mv2.jpg" type="button"><img alt="Screenshots image 34" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_38e4f62c429d4dcd8f78a7798c3c2af1~mv2.jpg"/></button><button aria-label="Open Screenshots image 35" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_676be118d53d409d828747c5982aac7e~mv2.jpg" type="button"><img alt="Screenshots image 35" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_676be118d53d409d828747c5982aac7e~mv2.jpg"/></button><button aria-label="Open Screenshots image 36" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_96ad5ed24db647c3bdff1679e1a8c7b5~mv2.jpg" type="button"><img alt="Screenshots image 36" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_96ad5ed24db647c3bdff1679e1a8c7b5~mv2.jpg"/></button><button aria-label="Open Screenshots image 37" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_8a1bb29ff61c47e9930e59be3379a730~mv2.jpg" type="button"><img alt="Screenshots image 37" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_8a1bb29ff61c47e9930e59be3379a730~mv2.jpg"/></button><button aria-label="Open Screenshots image 38" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_aae3614757f740a59f5a9d7394f3f783~mv2.jpg" type="button"><img alt="Screenshots image 38" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_aae3614757f740a59f5a9d7394f3f783~mv2.jpg"/></button><button aria-label="Open Screenshots image 39" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a0fb3c6d4e964ee79e5eb5bd48c0e092~mv2.jpg" type="button"><img alt="Screenshots image 39" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a0fb3c6d4e964ee79e5eb5bd48c0e092~mv2.jpg"/></button><button aria-label="Open Screenshots image 40" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_dc90a7fe8ec1482cae34bc0f0a452618~mv2.jpg" type="button"><img alt="Screenshots image 40" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_dc90a7fe8ec1482cae34bc0f0a452618~mv2.jpg"/></button><button aria-label="Open Screenshots image 41" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_da5fa8468c234a54b361804172c16f29~mv2.jpg" type="button"><img alt="Screenshots image 41" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_da5fa8468c234a54b361804172c16f29~mv2.jpg"/></button><button aria-label="Open Screenshots image 42" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_bc86885eb5934dcfbdc6f838cc345d59~mv2.jpg" type="button"><img alt="Screenshots image 42" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_bc86885eb5934dcfbdc6f838cc345d59~mv2.jpg"/></button><button aria-label="Open Screenshots image 43" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_86ed0352eebc41d9955e0115c8dd6057~mv2.jpg" type="button"><img alt="Screenshots image 43" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_86ed0352eebc41d9955e0115c8dd6057~mv2.jpg"/></button><button aria-label="Open Screenshots image 44" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_3bf1f0097cd8480b9ea9fee38639d2d8~mv2.jpg" type="button"><img alt="Screenshots image 44" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_3bf1f0097cd8480b9ea9fee38639d2d8~mv2.jpg"/></button><button aria-label="Open Screenshots image 45" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_83047c5b8dae4f708876cb9b8ff6f5f6~mv2.jpg" type="button"><img alt="Screenshots image 45" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_83047c5b8dae4f708876cb9b8ff6f5f6~mv2.jpg"/></button><button aria-label="Open Screenshots image 46" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_d4caca2591224c91ac8cc0ca99180bff~mv2.jpg" type="button"><img alt="Screenshots image 46" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_d4caca2591224c91ac8cc0ca99180bff~mv2.jpg"/></button><button aria-label="Open Screenshots image 47" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_10f4ca160c5e44ed91b283b3d5c12a31~mv2.jpg" type="button"><img alt="Screenshots image 47" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_10f4ca160c5e44ed91b283b3d5c12a31~mv2.jpg"/></button><button aria-label="Open Screenshots image 48" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6a94a4f3b8224ceb8ffc6345d082b36d~mv2.jpg" type="button"><img alt="Screenshots image 48" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_6a94a4f3b8224ceb8ffc6345d082b36d~mv2.jpg"/></button><button aria-label="Open Screenshots image 49" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_d8fdb575fa1b493b9ac8530588877a6b~mv2.jpg" type="button"><img alt="Screenshots image 49" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_d8fdb575fa1b493b9ac8530588877a6b~mv2.jpg"/></button><button aria-label="Open Screenshots image 50" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_0f1088bd267b4c059f9c15571536ac51~mv2.jpg" type="button"><img alt="Screenshots image 50" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_0f1088bd267b4c059f9c15571536ac51~mv2.jpg"/></button><button aria-label="Open Screenshots image 51" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_42780b11284149209239c8d14c70c3d3~mv2.jpg" type="button"><img alt="Screenshots image 51" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_42780b11284149209239c8d14c70c3d3~mv2.jpg"/></button><button aria-label="Open Screenshots image 52" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_86b89d8e5d544327a99d166618828ed9~mv2.jpg" type="button"><img alt="Screenshots image 52" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_86b89d8e5d544327a99d166618828ed9~mv2.jpg"/></button><button aria-label="Open Screenshots image 53" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_154045645a3545988b2a8675e40def95~mv2.jpg" type="button"><img alt="Screenshots image 53" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_154045645a3545988b2a8675e40def95~mv2.jpg"/></button><button aria-label="Open Screenshots image 54" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_a3052ab8d231440baba9bd97d11436f7~mv2.jpg" type="button"><img alt="Screenshots image 54" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_a3052ab8d231440baba9bd97d11436f7~mv2.jpg"/></button><button aria-label="Open Screenshots image 55" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_df9d0fd921fa4fbf9e26022553aa1e6c~mv2.jpg" type="button"><img alt="Screenshots image 55" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_df9d0fd921fa4fbf9e26022553aa1e6c~mv2.jpg"/></button><button aria-label="Open Screenshots image 56" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_f8300202e3254f8da3f2a33447a39fe4~mv2.jpg" type="button"><img alt="Screenshots image 56" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_f8300202e3254f8da3f2a33447a39fe4~mv2.jpg"/></button><button aria-label="Open Screenshots image 57" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_c408f217c484470394503ec8b435779b~mv2.jpg" type="button"><img alt="Screenshots image 57" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_c408f217c484470394503ec8b435779b~mv2.jpg"/></button><button aria-label="Open Screenshots image 58" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_e5854b913591474581399e1e43bce45b~mv2.jpg" type="button"><img alt="Screenshots image 58" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_e5854b913591474581399e1e43bce45b~mv2.jpg"/></button><button aria-label="Open Screenshots image 59" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_fc8813f6608b49499c59edd3c16ee51f~mv2.jpg" type="button"><img alt="Screenshots image 59" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_fc8813f6608b49499c59edd3c16ee51f~mv2.jpg"/></button><button aria-label="Open Screenshots image 60" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_69de78d169694f0ab58ba201209d54d0~mv2.jpg" type="button"><img alt="Screenshots image 60" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_69de78d169694f0ab58ba201209d54d0~mv2.jpg"/></button><button aria-label="Open Screenshots image 61" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_d38f263ab5914a8bb9a9070a329aeb58~mv2.jpg" type="button"><img alt="Screenshots image 61" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_d38f263ab5914a8bb9a9070a329aeb58~mv2.jpg"/></button><button aria-label="Open Screenshots image 62" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_8bdccc49f1a1402489a94d31c40b515e~mv2.jpg" type="button"><img alt="Screenshots image 62" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_8bdccc49f1a1402489a94d31c40b515e~mv2.jpg"/></button><button aria-label="Open Screenshots image 63" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_04c3e2cbaa944af089f201a01e2b15d7~mv2.jpg" type="button"><img alt="Screenshots image 63" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_04c3e2cbaa944af089f201a01e2b15d7~mv2.jpg"/></button><button aria-label="Open Screenshots image 64" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_db461380a7134ebcb52bd18f93d526cc~mv2.jpg" type="button"><img alt="Screenshots image 64" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_db461380a7134ebcb52bd18f93d526cc~mv2.jpg"/></button><button aria-label="Open Screenshots image 65" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6f1aaf039efb43288208da187a1ff90e~mv2.jpg" type="button"><img alt="Screenshots image 65" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_6f1aaf039efb43288208da187a1ff90e~mv2.jpg"/></button><button aria-label="Open Screenshots image 66" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_1738d9a82f5742759f4f111d869891d0~mv2.jpg" type="button"><img alt="Screenshots image 66" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_1738d9a82f5742759f4f111d869891d0~mv2.jpg"/></button><button aria-label="Open Screenshots image 67" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_ca5c951ab77445c2a02888129e00212e~mv2.jpg" type="button"><img alt="Screenshots image 67" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_ca5c951ab77445c2a02888129e00212e~mv2.jpg"/></button><button aria-label="Open Screenshots image 68" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_1f7b8fd20eeb4340a0690633846fe773~mv2.jpg" type="button"><img alt="Screenshots image 68" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_1f7b8fd20eeb4340a0690633846fe773~mv2.jpg"/></button><button aria-label="Open Screenshots image 69" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_03a94de3e90c4b13bc374f0b680a29a4~mv2.jpg" type="button"><img alt="Screenshots image 69" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_03a94de3e90c4b13bc374f0b680a29a4~mv2.jpg"/></button><button aria-label="Open Screenshots image 70" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_9f87489795ed4c5e8dba8f13e29584d8~mv2.jpg" type="button"><img alt="Screenshots image 70" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_9f87489795ed4c5e8dba8f13e29584d8~mv2.jpg"/></button><button aria-label="Open Screenshots image 71" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_696a9bf0f49d416da81c9f7d9084a4ad~mv2.jpg" type="button"><img alt="Screenshots image 71" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_696a9bf0f49d416da81c9f7d9084a4ad~mv2.jpg"/></button><button aria-label="Open Screenshots image 72" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_dbe56c8d7c944c52bec0c723a84e022e~mv2.jpg" type="button"><img alt="Screenshots image 72" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_dbe56c8d7c944c52bec0c723a84e022e~mv2.jpg"/></button><button aria-label="Open Screenshots image 73" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_bff2702e06504b66a8ed8443b5fc7843~mv2.jpg" type="button"><img alt="Screenshots image 73" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_bff2702e06504b66a8ed8443b5fc7843~mv2.jpg"/></button><button aria-label="Open Screenshots image 74" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_852ac73cd2c349f58dfbbd50719eaf84~mv2.jpg" type="button"><img alt="Screenshots image 74" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_852ac73cd2c349f58dfbbd50719eaf84~mv2.jpg"/></button><button aria-label="Open Screenshots image 75" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_1e77d6eaa1d44662b50d4c8202c09d95~mv2.jpg" type="button"><img alt="Screenshots image 75" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_1e77d6eaa1d44662b50d4c8202c09d95~mv2.jpg"/></button></div>
+</section>
+<section class="project-closing">
+<div class="section-heading next-section-heading">
+<span>06</span><span class="slash">/</span><span>Next Project</span>
+</div>
+<a class="next-feature" data-nav="next" href="#">
+<div class="next-feature-image"></div>
+<div class="next-feature-content">
+<div class="next-feature-kicker">Continue Exploring</div>
+<h2>Half-Life 2: Mesa Breach</h2>
+<div class="next-feature-role">Level Designer</div>
+<div class="next-feature-cta"><span>View Project</span><span class="next-feature-arrow">→</span></div>
+</div>
+</a>
+</section>
+<!-- =======================================================
+       CANONICAL LANDING-PAGE FOOTER
+       ======================================================= -->
+<footer class="footer">
+<div>
+<div class="brand-name">CHRIS GAD</div>
+<div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div>
+</div>
+<div class="footer-nav">
+<a data-nav="home" href="#">Home</a>
+<a data-nav="resume" href="#">Download Resume</a>
+<a data-external="linkedin" href="https://www.linkedin.com/in/chrisgad">LinkedIn</a>
+</div>
+</footer><div style="height:25px;"></div>
+<div style="width:100%; height:1px; background:lightgrey;"></div>
+</div>
+<script>
+const CONFIG = {
+  images:{
+    hero:"https://static.wixstatic.com/media/0280ad_141f1a0f507c4b6785caf82ac6889848~mv2.jpg",
+    focus1:"https://static.wixstatic.com/media/0280ad_2ac134829e5d45c19dd0ca16cbbc060f~mv2.jpg",
+    focus2:"https://static.wixstatic.com/media/0280ad_04c3e2cbaa944af089f201a01e2b15d7~mv2.jpg",
+    focus3:"https://static.wixstatic.com/media/0280ad_6f1aaf039efb43288208da187a1ff90e~mv2.jpg",
+    next:"https://static.wixstatic.com/media/0280ad_fbf40ba5a20b44f793c971e862302d55~mv2.jpg"
+  },
+  videos:{
+    "public1":"https://www.youtube.com/embed/2yXdXtd24qI",
+    "public2":"https://www.youtube.com/embed/yDAg4wCZDUU"
+  },
+  links:{
+    home:"/",
+    resume:"https://0280ad4f-339b-406b-b50f-32dca5251a14.usrfiles.com/ugd/0280ad_f685989048a849a0a076404b09ea0107.pdf",
+    next:"/hl2-mesa-breach"
+  }
+};
+
+const imageVars={
+  hero:"--img-hero",
+  focus1:"--img-focus1",
+  focus2:"--img-focus2",
+  focus3:"--img-focus3",
+  next:"--img-next"
+};
+for(const [key,cssVar] of Object.entries(imageVars)){
+  const url=CONFIG.images[key];
+  if(url && url.trim()){
+    document.documentElement.style.setProperty(cssVar,`url("${url.trim().replace(/"/g,'\\\"')}")`);
+  }
+}
+
+function youtubeEmbedUrl(url){
+  if(!url || !url.trim()) return "";
+  try{
+    const u=new URL(url.trim());
+    let id="";
+    if(u.hostname.includes("youtu.be")) id=u.pathname.replace("/","");
+    else if(u.pathname.includes("/embed/")) id=u.pathname.split("/embed/")[1].split("/")[0];
+    else id=u.searchParams.get("v") || "";
+    if(id){
+      id=id.split("?")[0].split("&")[0];
+      return `https://www.youtube.com/embed/${id}?rel=0`;
+    }
+  }catch(e){}
+  return "";
+}
+
+/*
+  CUSTOM VIDEO POSTERS
+  ------------------------------------------------------------
+  Paste any image URL beside a frame ID below to use it as that
+  video's thumbnail. Leave it blank to use the video's own
+  YouTube thumbnail automatically.
+
+  Example:
+  "publicVideo1": "https://static.wixstatic.com/media/0280ad_fb6fa7c4d0834ec48d94f333e4deee68~mv2.jpg"
+*/
+const VIDEO_POSTERS = {
+  "publicVideo1": "https://static.wixstatic.com/media/0280ad_fb6fa7c4d0834ec48d94f333e4deee68~mv2.jpg",
+  "publicVideo2": "https://static.wixstatic.com/media/0280ad_7178194b1bca485b9baa2f25e65d5926~mv2.jpg"
+};
+
+function youtubeVideoId(url){
+  if(!url || !url.trim()) return "";
+  try{
+    const u=new URL(url.trim());
+    let id="";
+    if(u.hostname.includes("youtu.be")){
+      id=u.pathname.replace("/","");
+    }else if(u.pathname.includes("/embed/")){
+      id=u.pathname.split("/embed/")[1].split("/")[0];
+    }else{
+      id=u.searchParams.get("v") || "";
+    }
+    return id.split("?")[0].split("&")[0];
+  }catch(e){
+    return "";
+  }
+}
+
+function youtubePosterUrl(url){
+  const id=youtubeVideoId(url);
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "";
+}
+
+function escapeVideoAttr(value){
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/"/g,"&quot;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+function mountVideo(frameId,url,title){
+  const frame=document.getElementById(frameId);
+  const embed=youtubeEmbedUrl(url);
+  if(!frame || !embed) return;
+
+  const customPoster=(VIDEO_POSTERS[frameId] || frame.dataset.poster || "").trim();
+  const poster=customPoster || youtubePosterUrl(url);
+  const safeTitle=escapeVideoAttr(title);
+  const safePoster=escapeVideoAttr(poster);
+
+  frame.innerHTML=`
+    <button class="video-poster" type="button" aria-label="Play ${safeTitle}">
+      ${safePoster ? `<img src="${safePoster}" alt="" loading="eager" decoding="async">` : ""}
+      <span class="video-poster-play" aria-hidden="true"></span>
+      <span class="video-poster-label">Play video</span>
+    </button>`;
+
+  const button=frame.querySelector(".video-poster");  const posterImg=frame.querySelector(".video-poster img");
+
+  if(posterImg){
+    posterImg.addEventListener("error",()=>posterImg.remove(),{once:true});
+  }
+
+  button.addEventListener("click",()=>{
+    const autoplayUrl=embed + (embed.includes("?") ? "&" : "?") + "autoplay=1";
+    frame.innerHTML=`
+      <iframe
+        src="${autoplayUrl}"
+        title="${safeTitle}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>`;
+  },{once:true});
+}
+
+mountVideo("publicVideo1",CONFIG.videos["public1"],"AcmeTv");
+mountVideo("publicVideo2",CONFIG.videos["public2"],"News Report");
+
+function requestWixNavigation(url){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({type:"navigate",url:url.trim()},"*");
+}
+document.querySelectorAll("[data-nav]").forEach(el=>{
+  const url=CONFIG.links[el.dataset.nav];
+  if(url && url.trim()){
+    el.href=url.trim();
+    el.addEventListener("click",e=>{e.preventDefault();requestWixNavigation(url);});
+  }else el.addEventListener("click",e=>e.preventDefault());
+});
+document.querySelectorAll("[data-external]").forEach(el=>{
+  const url=el.getAttribute("href");
+  if(url && url.trim()){
+    el.addEventListener("click",e=>{
+      e.preventDefault();
+      window.parent.postMessage({type:"externalNavigate",url:url.trim()},"*");
+    });
+  }
+});
+
+/* PATCH 12 — recovered gallery zoom + View All */
+function recoveredRequestProjectImage(url, alt){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({
+    type:"openProjectImage",
+    url:url.trim(),
+    alt:alt || "Project image"
+  },"*");
+}
+
+document.querySelectorAll("[data-recovered-image]").forEach(el=>{
+  el.addEventListener("click",()=>{
+    const img=el.querySelector("img");
+    recoveredRequestProjectImage(el.dataset.recoveredImage, img?.alt || "Project image");
+  });
+});
+
+document.querySelectorAll("[data-recovered-expand]").forEach(btn=>{
+  const key=btn.dataset.recoveredExpand;
+  const gallery=document.querySelector(`[data-recovered-expanded="${key}"]`);
+  if(!gallery) return;
+  const label=btn.querySelector("span:first-child");
+  const arrow=btn.querySelector(".gallery-arrow");
+  const original=label ? label.textContent : "View all images";
+
+  btn.addEventListener("click",()=>{
+    const opening=gallery.hasAttribute("hidden");
+    if(opening){
+      gallery.removeAttribute("hidden");
+      if(label) label.textContent="Hide images";
+      if(arrow) arrow.textContent="↑";
+    }else{
+      gallery.setAttribute("hidden","");
+      if(label) label.textContent=original;
+      if(arrow) arrow.textContent="→";
+    }
+  });
+});
+
+
+
+/* PATCH 15 — unified gallery interaction and video-grid sizing */
+function cgOpenProjectImage(url,alt){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({
+    type:"openProjectImage",
+    url:url.trim(),
+    alt:alt || "Project image"
+  },"*");
+}
+document.querySelectorAll("[data-cg-image]").forEach(el=>{
+  const open=()=>{
+    const img=el.querySelector("img");
+    cgOpenProjectImage(el.dataset.cgImage,img?.alt || "Project image");
+  };
+  el.addEventListener("click",open);
+  el.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}
+  });
+});
+document.querySelectorAll("[data-cg-expand]").forEach(btn=>{
+  const key=btn.dataset.cgExpand;
+  const gallery=document.querySelector(`[data-cg-expanded="${key}"]`);
+  if(!gallery) return;
+  const label=btn.querySelector("span:first-child");
+  const arrow=btn.querySelector(".cg-gallery-arrow");
+  const original=label ? label.textContent : "View all images";
+  btn.addEventListener("click",()=>{
+    const opening=gallery.hasAttribute("hidden");
+    if(opening){
+      gallery.removeAttribute("hidden");
+      if(label) label.textContent="Hide images";
+      if(arrow) arrow.textContent="↑";
+    }else{
+      gallery.setAttribute("hidden","");
+      if(label) label.textContent=original;
+      if(arrow) arrow.textContent="→";
+    }
+  });
+});
+document.querySelectorAll(".video-grid").forEach(grid=>{
+  const count=Array.from(grid.children).filter(el=>el.nodeType===1).length;
+  if(count>0) grid.classList.add(`cg-video-count-${Math.min(count,6)}`);
+});
+
+
+
+</script>
+
+<script>
+/* PATCH 26.8 — universal Wix HTML-component history/scroll bridge.
+   Uses a handshake so wheel input is intercepted only when the Wix page
+   confirms its message listener is alive. This avoids hard-locks after
+   browser back/forward restoration while removing unreliable iframe
+   scroll chaining when the bridge is active. */
+(function(){
+  if(window.__cgUniversalWixBridgeV3) return;
+  window.__cgUniversalWixBridgeV3 = true;
+
+  let bridgeActive = false;
+
+  function postToWix(message){
+    try{ window.parent.postMessage(message, "*"); }catch(e){}
+  }
+
+  function announceBridge(){
+    bridgeActive = false;
+    try{
+      if("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0,0);
+    }catch(e){}
+
+    postToWix({type:"portfolioBridgeHello"});
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },250);
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },900);
+  }
+
+  window.addEventListener("message", event=>{
+    if(event?.data?.type === "portfolioBridgeActive") bridgeActive = true;
+  });
+
+  window.addEventListener("pageshow", announceBridge);
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", announceBridge, {once:true});
+  }else{
+    setTimeout(announceBridge,0);
+  }
+
+  window.addEventListener("wheel", event=>{
+    if(!bridgeActive || event.ctrlKey || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
+
+    let deltaY = event.deltaY;
+    if(event.deltaMode === 1) deltaY *= 16;
+    else if(event.deltaMode === 2) deltaY *= window.innerHeight;
+
+    event.preventDefault();
+    postToWix({type:"portfolioScroll", deltaY});
+  },{passive:false});
+})();
+</script>
+
+<script>
+/* FINAL GALLERY PATCH — fixed-height browsing + lightbox sequence metadata.
+   Keeps Wix iframe height stable and sends the full gallery order/index to
+   the Project Image Viewer so Previous / Next controls can navigate it. */
+(function(){
+  function getExpandedSourceFor(el){
+    var expanded = el.closest && el.closest('.cg-expanded');
+    if(expanded) return expanded;
+
+    var preview = el.closest && el.closest('.cg-gallery');
+    if(!preview) return null;
+
+    var footer = preview.nextElementSibling;
+    if(!footer || !footer.classList.contains('cg-gallery-footer')){
+      footer = preview.parentElement && preview.parentElement.querySelector('.cg-gallery-footer');
+    }
+    var btn = footer && footer.querySelector('[data-cg-expand]');
+    if(!btn) return null;
+
+    var key = btn.getAttribute('data-cg-expand');
+    if(!key) return null;
+    return document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+  }
+
+  function gallerySequence(el){
+    var source = getExpandedSourceFor(el);
+    var scope = source || (el.closest && el.closest('section')) || document;
+    var nodes = Array.from(scope.querySelectorAll('[data-cg-image]'));
+    var seen = new Set();
+    var images = [];
+
+    nodes.forEach(function(node){
+      var url = (node.getAttribute('data-cg-image') || '').trim();
+      if(url && !seen.has(url)){
+        seen.add(url);
+        images.push(url);
+      }
+    });
+
+    return images;
+  }
+
+  function openProjectImage(el){
+    if(!el) return;
+    var url = (el.getAttribute('data-cg-image') || '').trim();
+    if(!url) return;
+
+    var img = el.querySelector('img');
+    var images = gallerySequence(el);
+    var index = Math.max(0, images.indexOf(url));
+
+    window.parent.postMessage({
+      type:'openProjectImage',
+      url:url,
+      alt:(img && img.alt) || 'Project image',
+      images:images.length ? images : [url],
+      index:index
+    }, '*');
+  }
+
+  function setupFixedGalleryBrowsers(){
+    document.querySelectorAll('[data-cg-expand]').forEach(function(oldBtn){
+      if(oldBtn.dataset.cgFixedBrowser === '1') return;
+
+      var key = oldBtn.getAttribute('data-cg-expand');
+      var expanded = document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+      if(!expanded) return;
+
+      var footer = oldBtn.closest('.cg-gallery-footer');
+      var preview = footer && footer.previousElementSibling && footer.previousElementSibling.classList.contains('cg-gallery')
+        ? footer.previousElementSibling
+        : (footer ? footer.parentElement.querySelector('.cg-gallery') : null);
+      if(!preview) return;
+
+      var slots = Array.from(preview.querySelectorAll('[data-cg-image]'));
+      var source = Array.from(expanded.querySelectorAll('[data-cg-image]'));
+      if(!slots.length || !source.length) return;
+
+      var items = source.map(function(el){
+        var img = el.querySelector('img');
+        return {
+          url:(el.getAttribute('data-cg-image') || '').trim(),
+          alt:(img && img.alt) || 'Project image'
+        };
+      }).filter(function(item){ return item.url; });
+
+      expanded.setAttribute('hidden','');
+      expanded.style.display = 'none';
+
+      if(items.length <= slots.length){
+        if(footer) footer.style.display = 'none';
+        return;
+      }
+
+      // Replace the original control so older inline expand listeners are removed.
+      var btn = oldBtn.cloneNode(true);
+      oldBtn.replaceWith(btn);
+      btn.dataset.cgFixedBrowser = '1';
+
+      var label = btn.querySelector('span:first-child');
+      var arrow = btn.querySelector('.cg-gallery-arrow');
+      var pageSize = slots.length;
+      var starts = [];
+
+      for(var s=0; s<items.length; s+=pageSize) starts.push(s);
+      if(starts.length > 1){
+        var last = Math.max(0, items.length - pageSize);
+        starts[starts.length - 1] = last;
+        starts = starts.filter(function(v,i,a){ return i===0 || v!==a[i-1]; });
+      }
+
+      var page = 0;
+
+      function render(){
+        var start = starts[page];
+
+        slots.forEach(function(slot,i){
+          var item = items[start+i];
+          var img = slot.querySelector('img');
+
+          if(item){
+            slot.style.visibility = '';
+            slot.style.pointerEvents = '';
+            slot.setAttribute('data-cg-image',item.url);
+            slot.setAttribute('aria-label','Open ' + item.alt);
+
+            if(img){
+              img.src = item.url;
+              img.alt = item.alt;
+            }
+          }else{
+            slot.style.visibility = 'hidden';
+            slot.style.pointerEvents = 'none';
+            slot.removeAttribute('data-cg-image');
+          }
+        });
+
+        var end = Math.min(start + pageSize,items.length);
+
+        if(page === 0){
+          if(label) label.textContent = 'Browse all ' + items.length + ' images';
+          if(arrow) arrow.textContent = '→';
+        }else{
+          if(label) label.textContent = 'Images ' + (start+1) + '–' + end + ' of ' + items.length;
+          if(arrow) arrow.textContent = (page === starts.length-1) ? '↺' : '→';
+        }
+      }
+
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        page = (page + 1) % starts.length;
+        render();
+      });
+
+      render();
+    });
+  }
+
+  // One reliable image-open path for every gallery thumbnail.
+  document.addEventListener('click',function(e){
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  document.addEventListener('keydown',function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded',setupFixedGalleryBrowsers);
+  }else{
+    setupFixedGalleryBrowsers();
+  }
+})();
+</script>
+
+
+
+
+<script src="/portfolio/assets/js/standalone.js"></script>
+</body>
+</html>
