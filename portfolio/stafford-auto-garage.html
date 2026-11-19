@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Stafford Auto Garage — Chris Gad</title><style>
+:root{--page:#f8f8f6;--ink:#171717;--muted:#72726d;--faint:#9a9a95;--line:#d8d8d3;--paper:#fbfbfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}.site{width:100%;padding:0 clamp(28px,4vw,72px)}
+.site-header{min-height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand-name{font-size:28px;font-weight:400;letter-spacing:-.035em}.brand-role{margin-top:3px;color:var(--muted);font-size:13px}
+.nav{display:flex;align-items:center;gap:40px;font-size:12px;text-transform:uppercase}.nav .resume{background:var(--ink);color:#fff;padding:12px 22px}
+.case-top{padding:22px 0}.back{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.055em;text-transform:uppercase}.back:hover{color:var(--ink)}
+.case-hero{display:grid;grid-template-columns:minmax(360px,.75fr) minmax(0,1.25fr);min-height:500px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.case-copy{display:flex;flex-direction:column;justify-content:center;padding:48px 52px 48px 0}.eyebrow{color:#8f8f89;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.case-copy h1{margin:16px 0 0;font-size:clamp(46px,4.6vw,78px);line-height:.92;font-weight:350;letter-spacing:-.055em}.case-role{margin-top:24px;font-size:17px;font-weight:650}.case-meta{margin-top:5px;color:var(--muted);font-size:13px}
+.case-image{min-height:500px;background-size:cover;background-position:center}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}.chip{padding:6px 10px;border:1px solid #d0d0cb;color:#666661;background:rgba(255,255,255,.34);font-size:9px;letter-spacing:.03em;text-transform:uppercase}
+.section{padding:40px 0;border-bottom:1px solid var(--line)}.section-heading{display:flex;gap:8px;margin-bottom:27px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.slash{color:#aaa9a4}
+.overview{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(290px,.75fr);gap:70px}.lead{margin:0;color:#555550;font-size:19px;line-height:1.68}.facts{border-top:1px solid var(--line)}.fact{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}.fact span:first-child{color:#999994;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:500px}.mosaic img{width:100%;height:100%;object-fit:cover;display:block;background:#ddd}.mosaic img:first-child{grid-row:1/3}
+.more-images{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}.more-images img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#ddd;display:block}
+.video-group+.video-group{margin-top:34px}.video-group-title{margin-bottom:13px;color:#858580;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.video-card{border:1px solid #deded9;background:rgba(255,255,255,.34);overflow:hidden;cursor:pointer}
+.video-visual{position:relative;aspect-ratio:16/9;background-size:cover;background-position:center;display:grid;place-items:center}.video-visual iframe{width:100%;height:100%;border:0;display:block}
+.play{width:56px;height:56px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.62);color:#fff;font-size:19px;padding-left:3px;transition:transform .16s ease}.video-card:hover .play{transform:scale(1.06)}
+.video-copy{padding:17px 19px 19px}.video-title{font-size:16px;font-weight:650;line-height:1.2}.video-note{margin-top:6px;color:#898984;font-size:10px;letter-spacing:.025em;text-transform:uppercase}
+.source-note{margin:-8px 0 22px;padding:14px 16px;background:#efefeb;color:#777772;font-size:12px;line-height:1.5}
+.return{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:34px 0;border-bottom:1px solid var(--line)}.return-title{font-size:19px;font-weight:650}.return-sub{margin-top:3px;color:#888883;font-size:10px;text-transform:uppercase}.return-arrow{width:40px;height:40px;border:1px solid #aaa9a4;border-radius:50%;display:grid;place-items:center}
+.footer{min-height:92px;display:flex;align-items:center;justify-content:space-between}.footer-nav{display:flex;gap:28px;color:var(--muted);font-size:12px;text-transform:uppercase}
+@media(max-width:1050px){.case-hero{grid-template-columns:1fr}.case-copy{padding:44px 0}.case-image{min-height:400px}.overview{grid-template-columns:1fr;gap:34px}.more-images{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.site{padding:0 14px}.site-header{min-height:68px}.nav{gap:14px}.nav a:first-child{display:none}.nav .resume{padding:10px 13px}.case-copy h1{font-size:45px}.case-image{min-height:290px}.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto;min-height:0}.mosaic img,.mosaic img:first-child{grid-row:auto;aspect-ratio:16/10;height:auto}.mosaic img:first-child{grid-column:1/-1}.more-images{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:1fr}.footer{align-items:flex-end;gap:20px}.footer-nav{gap:15px;flex-wrap:wrap;justify-content:flex-end}}
+
+  /* PATCH 14 — Watch Dogs case-study gallery zoom */
+  .mosaic img,.more-images img{cursor:zoom-in}
+
+
+
+/* =========================================================
+   PATCH 15 — unified gallery + video layout
+   ========================================================= */
+.cg-gallery{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) !important;
+  gap:10px !important;
+  height:clamp(430px,43vw,620px) !important;
+  min-height:0 !important;
+}
+.cg-gallery-main,
+.cg-gallery-small .cg-gallery-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery-main img,
+.cg-gallery-small .cg-gallery-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.cg-gallery-small{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+.cg-gallery.cg-count-2 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+}
+.cg-gallery.cg-count-3 .cg-gallery-small{
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.cg-gallery.cg-count-4 .cg-gallery-small .cg-gallery-item:last-child{
+  grid-column:1/-1;
+}
+.cg-gallery.cg-count-1{
+  grid-template-columns:1fr !important;
+}
+.cg-gallery.cg-count-1 .cg-gallery-small{
+  display:none;
+}
+.cg-gallery-footer{
+  display:flex;
+  justify-content:flex-end;
+  border-top:1px solid var(--line,#d9d9d4);
+  margin-top:14px;
+  padding-top:14px;
+}
+.cg-view-all{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  color:#171717;
+  font:inherit;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.cg-view-all:hover{opacity:.55}
+.cg-view-all .cg-gallery-arrow{
+  font-size:17px;
+  line-height:1;
+  font-weight:400;
+}
+.cg-expanded[hidden]{display:none !important}
+.cg-expanded{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line,#d9d9d4);
+}
+.cg-expanded-item{
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#171717;
+  cursor:zoom-in;
+}
+.cg-expanded-item img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.video-grid{
+  gap:10px !important;
+}
+.video-grid.cg-video-count-1{
+  grid-template-columns:1fr !important;
+}
+.video-grid.cg-video-count-2,
+.video-grid.cg-video-count-4{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.video-grid.cg-video-count-3,
+.video-grid.cg-video-count-5,
+.video-grid.cg-video-count-6{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+@media(max-width:1000px){
+  .cg-expanded{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:760px){
+  .cg-gallery{
+    grid-template-columns:1fr !important;
+    height:auto !important;
+  }
+  .cg-gallery-main{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-gallery-small{
+    height:auto;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-template-rows:repeat(2,150px) !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-small,
+  .cg-gallery.cg-count-3 .cg-gallery-small{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto !important;
+  }
+  .cg-gallery.cg-count-2 .cg-gallery-item,
+  .cg-gallery.cg-count-3 .cg-gallery-item{
+    aspect-ratio:16/9;
+    height:auto;
+  }
+  .cg-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .video-grid,
+  .video-grid.cg-video-count-1,
+  .video-grid.cg-video-count-2,
+  .video-grid.cg-video-count-3,
+  .video-grid.cg-video-count-4,
+  .video-grid.cg-video-count-5,
+  .video-grid.cg-video-count-6{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+  /* PATCH 19 — resume title fit */
+  .brand-role{
+    font-size:12px !important;
+    line-height:1.25;
+  }
+</style><link rel="stylesheet" href="/portfolio/assets/css/standalone.css"/>
+</head><body><div class="site">
+<header class="site-header"><div><div class="brand-name">CHRIS GAD</div><div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div></div><nav class="nav"><a data-nav="home" href="https://chrisgad.wixsite.com/portfolio/" target="_top">Home</a><a class="resume" data-nav="resume" href="https://0280ad4f-339b-406b-b50f-32dca5251a14.usrfiles.com/ugd/0280ad_f685989048a849a0a076404b09ea0107.pdf" target="_blank" rel="noopener">Download Resume</a></nav></header>
+<div class="case-top"><a class="back" data-nav="watchdogs" href="https://chrisgad.wixsite.com/portfolio/watchdogs-legion" target="_top">← Back to Watch Dogs: Legion</a></div>
+<section class="case-hero"><div class="case-copy"><div class="eyebrow">Watch Dogs: Legion / Case Study</div><h1>Stafford Auto Garage</h1><div class="case-role">Senior Level Designer</div><div class="case-meta">Ubisoft Montréal · Industrial Mission Space · Camden</div><div class="chips"><span class="chip">Mission Design</span><span class="chip">Sandbox</span><span class="chip">Stealth</span><span class="chip">Hacking</span><span class="chip">Combat</span><span class="chip">Environmental Storytelling</span></div></div><div class="case-image" style="background-image:url('https://static.wixstatic.com/media/0280ad_668e91b2bf70418b8217fda358236325~mv2.webp')"></div></section>
+<section class="section"><div class="section-heading"><span>01</span><span class="slash">/</span><span>Overview</span></div><div class="overview"><p class="lead">Designed the layout and mission flow for a functioning automotive garage covertly occupied by Clan Kelley. The floor plan supported multiple infiltration strategies, environmental storytelling and objectives such as sabotage, data collection and vehicle recovery, while gantries and catwalks created tactical opportunities for stealth, hacking and close-quarters combat.</p><div class="facts"><div class="fact"><span>Project</span><span>Watch Dogs: Legion</span></div><div class="fact"><span>Studio</span><span>Ubisoft Montréal</span></div><div class="fact"><span>Role</span><span>Senior Level Designer</span></div><div class="fact"><span>Type</span><span>Mission Location / Industrial Garage</span></div></div></div></section>
+<section class="section"><div class="section-heading"><span>02</span><span class="slash">/</span><span>Images</span></div><div class="cg-gallery cg-count-4"><button aria-label="Open Images image 1" class="cg-gallery-main" data-cg-image="https://static.wixstatic.com/media/0280ad_668e91b2bf70418b8217fda358236325~mv2.webp" type="button"><img alt="Images image 1" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_668e91b2bf70418b8217fda358236325~mv2.webp"/></button><div class="cg-gallery-small"><button aria-label="Open Images image 2" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6dbb31c056514ba0bb134f363f21e6b4~mv2.webp" type="button"><img alt="Images image 2" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_6dbb31c056514ba0bb134f363f21e6b4~mv2.webp"/></button><button aria-label="Open Images image 3" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_28754591188048b1a52cc272b98adb9c~mv2.webp" type="button"><img alt="Images image 3" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_28754591188048b1a52cc272b98adb9c~mv2.webp"/></button><button aria-label="Open Images image 4" class="cg-gallery-item" data-cg-image="https://static.wixstatic.com/media/0280ad_392f5e8a4b714982947935662ce818fe~mv2.jpg" type="button"><img alt="Images image 4" decoding="async" loading="eager" src="https://static.wixstatic.com/media/0280ad_392f5e8a4b714982947935662ce818fe~mv2.jpg"/></button></div></div><div class="cg-gallery-footer"><button class="cg-view-all" data-cg-expand="wd-stafford-auto-garage-images" type="button"><span>View all 4 images</span><span class="cg-gallery-arrow">→</span></button></div><div class="cg-expanded" data-cg-expanded="wd-stafford-auto-garage-images" hidden=""><button aria-label="Open Images image 1" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_668e91b2bf70418b8217fda358236325~mv2.webp" type="button"><img alt="Images image 1" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_668e91b2bf70418b8217fda358236325~mv2.webp"/></button><button aria-label="Open Images image 2" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_6dbb31c056514ba0bb134f363f21e6b4~mv2.webp" type="button"><img alt="Images image 2" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_6dbb31c056514ba0bb134f363f21e6b4~mv2.webp"/></button><button aria-label="Open Images image 3" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_28754591188048b1a52cc272b98adb9c~mv2.webp" type="button"><img alt="Images image 3" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_28754591188048b1a52cc272b98adb9c~mv2.webp"/></button><button aria-label="Open Images image 4" class="cg-expanded-item" data-cg-image="https://static.wixstatic.com/media/0280ad_392f5e8a4b714982947935662ce818fe~mv2.jpg" type="button"><img alt="Images image 4" decoding="async" loading="lazy" src="https://static.wixstatic.com/media/0280ad_392f5e8a4b714982947935662ce818fe~mv2.jpg"/></button></div></section>
+<section class="section"><div class="section-heading"><span>03</span><span class="slash">/</span><span>Walkthroughs &amp; Process</span></div><div class="video-group"><div class="video-grid"><article class="video-card" data-title="Stealth Hacking Mission" data-video="https://www.youtube.com/watch?v=wBwzvxMmoy0"><div class="video-visual" style="background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url('https://i.ytimg.com/vi/wBwzvxMmoy0/hqdefault.jpg')"><div class="play">▶</div></div><div class="video-copy"><div class="video-title">Stealth Hacking Mission</div><div class="video-note">Original portfolio video · Click to play</div></div></article><article class="video-card" data-title="Hacking Combat Mission" data-video="https://www.youtube.com/watch?v=ovZXwbrbRpM"><div class="video-visual" style="background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url('https://i.ytimg.com/vi/ovZXwbrbRpM/hqdefault.jpg')"><div class="play">▶</div></div><div class="video-copy"><div class="video-title">Hacking Combat Mission</div><div class="video-note">Original portfolio video · Click to play</div></div></article><article class="video-card" data-title="Early Blockout Design" data-video="https://www.youtube.com/watch?v=lIcIUt1cB1I"><div class="video-visual" style="background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url('https://i.ytimg.com/vi/lIcIUt1cB1I/hqdefault.jpg')"><div class="play">▶</div></div><div class="video-copy"><div class="video-title">Early Blockout Design</div><div class="video-note">Original portfolio video · Click to play</div></div></article><article class="video-card" data-title="Early Mission Objective Design" data-video="https://www.youtube.com/watch?v=DTfR9u5_LnE"><div class="video-visual" style="background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url('https://i.ytimg.com/vi/DTfR9u5_LnE/hqdefault.jpg')"><div class="play">▶</div></div><div class="video-copy"><div class="video-title">Early Mission Objective Design</div><div class="video-note">Original portfolio video · Click to play</div></div></article><article class="video-card" data-title="Sandbox Gameplay Opportunities" data-video="https://www.youtube.com/watch?v=-RhFhVkZzho"><div class="video-visual" style="background-image:linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url('https://i.ytimg.com/vi/-RhFhVkZzho/hqdefault.jpg')"><div class="play">▶</div></div><div class="video-copy"><div class="video-title">Sandbox Gameplay Opportunities</div><div class="video-note">Original portfolio video · Click to play</div></div></article></div></div></section>
+<section class="return"><a data-nav="watchdogs" href="https://chrisgad.wixsite.com/portfolio/watchdogs-legion" target="_top"><div class="return-title">Watch Dogs: Legion</div><div class="return-sub">Back to Project</div></a><a class="return-arrow" data-nav="watchdogs" href="https://chrisgad.wixsite.com/portfolio/watchdogs-legion" target="_top">←</a></section>
+<footer class="footer"><div><div class="brand-name">CHRIS GAD</div><div class="brand-role">Principal / Expert / Senior Level &amp; Mission Designer</div></div><div class="footer-nav"><a data-nav="home" href="https://chrisgad.wixsite.com/portfolio/" target="_top">Home</a><a data-nav="resume" href="https://0280ad4f-339b-406b-b50f-32dca5251a14.usrfiles.com/ugd/0280ad_f685989048a849a0a076404b09ea0107.pdf" target="_blank" rel="noopener">Download Resume</a><a data-external="" href="https://www.linkedin.com/in/chrisgad/" target="_blank" rel="noopener">LinkedIn</a></div></footer><div style="height:25px;"></div>
+<div style="width:100%; height:1px; background:lightgrey;"></div>
+</div><script>
+function videoId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.replace(/^\/+/,"").split("/")[0];if(u.pathname.includes("/embed/"))return u.pathname.split("/embed/")[1].split("/")[0];return u.searchParams.get("v")||"";}catch(e){return "";}}
+document.querySelectorAll(".video-card[data-video]").forEach(card=>{card.addEventListener("click",()=>{const id=videoId(card.dataset.video);if(!id)return;const v=card.querySelector(".video-visual");if(v.querySelector("iframe"))return;v.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?rel=0&autoplay=1" title="${(card.dataset.title||"Portfolio video").replace(/"/g,"&quot;")}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;});});
+
+/* PATCH 14 — optional custom posters. Blank keeps the current YouTube thumbnail. */
+const VIDEO_POSTERS_PATCH14 = {
+  "wBwzvxMmoy0": "",
+  "ovZXwbrbRpM": "",
+  "lIcIUt1cB1I": "",
+  "DTfR9u5_LnE": "",
+  "-RhFhVkZzho": ""
+};
+document.querySelectorAll(".video-card[data-video]").forEach(card=>{
+  const id=videoId(card.dataset.video);
+  const custom=(VIDEO_POSTERS_PATCH14[id] || card.dataset.poster || "").trim();
+  if(!custom) return;
+  const visual=card.querySelector(".video-visual");
+  if(visual && !visual.querySelector("iframe")){
+    visual.style.backgroundImage=`linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.14)),url("${custom}")`;
+  }
+});
+
+function requestProjectImagePatch14(url,alt){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({type:"openProjectImage",url:url.trim(),alt:alt || "Project image"},"*");
+}
+document.querySelectorAll(".mosaic img,.more-images img").forEach((img,index)=>{
+  if(index<5) img.loading="eager";
+  img.decoding="async";
+  img.tabIndex=0;
+  img.setAttribute("role","button");
+  const open=()=>requestProjectImagePatch14(img.currentSrc || img.src,img.alt || "Project image");
+  img.addEventListener("click",open);
+  img.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}
+  });
+});
+
+
+
+/* PATCH 15 — unified gallery interaction and video-grid sizing */
+function cgOpenProjectImage(url,alt){
+  if(!url || !url.trim()) return;
+  window.parent.postMessage({
+    type:"openProjectImage",
+    url:url.trim(),
+    alt:alt || "Project image"
+  },"*");
+}
+document.querySelectorAll("[data-cg-image]").forEach(el=>{
+  const open=()=>{
+    const img=el.querySelector("img");
+    cgOpenProjectImage(el.dataset.cgImage,img?.alt || "Project image");
+  };
+  el.addEventListener("click",open);
+  el.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}
+  });
+});
+document.querySelectorAll("[data-cg-expand]").forEach(btn=>{
+  const key=btn.dataset.cgExpand;
+  const gallery=document.querySelector(`[data-cg-expanded="${key}"]`);
+  if(!gallery) return;
+  const label=btn.querySelector("span:first-child");
+  const arrow=btn.querySelector(".cg-gallery-arrow");
+  const original=label ? label.textContent : "View all images";
+  btn.addEventListener("click",()=>{
+    const opening=gallery.hasAttribute("hidden");
+    if(opening){
+      gallery.removeAttribute("hidden");
+      if(label) label.textContent="Hide images";
+      if(arrow) arrow.textContent="↑";
+    }else{
+      gallery.setAttribute("hidden","");
+      if(label) label.textContent=original;
+      if(arrow) arrow.textContent="→";
+    }
+  });
+});
+document.querySelectorAll(".video-grid").forEach(grid=>{
+  const count=Array.from(grid.children).filter(el=>el.nodeType===1).length;
+  if(count>0) grid.classList.add(`cg-video-count-${Math.min(count,6)}`);
+});
+
+
+
+
+/* PATCH 26.7 — deterministic Wix bridge for Watch Dogs pages.
+   - Always forwards wheel input to the Wix page so iframe focus/history restoration cannot trap scrolling.
+   - Uses relative Wix routes so SPA/history navigation stays consistent. */
+(function(){
+  if(window.__cgWatchDogsBridgeV2) return;
+  window.__cgWatchDogsBridgeV2=true;
+
+  const navMap={
+    home:"/",
+    watchdogs:"/watchdogs-legion"
+  };
+
+  document.querySelectorAll('a[data-wix-route], a[data-nav]').forEach(link=>{
+    if(link.dataset.nav==="resume") return;
+
+    const route=(link.dataset.wixRoute || navMap[link.dataset.nav] || "").trim();
+    if(!route) return;
+
+    link.addEventListener("click",event=>{
+      if(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button!==0) return;
+      event.preventDefault();
+      window.parent.postMessage({type:"navigate",url:route},"*");
+    });
+  });
+})();
+
+</script>
+<script>
+/* PATCH 26.8 — universal Wix HTML-component history/scroll bridge.
+   Uses a handshake so wheel input is intercepted only when the Wix page
+   confirms its message listener is alive. This avoids hard-locks after
+   browser back/forward restoration while removing unreliable iframe
+   scroll chaining when the bridge is active. */
+(function(){
+  if(window.__cgUniversalWixBridgeV3) return;
+  window.__cgUniversalWixBridgeV3 = true;
+
+  let bridgeActive = false;
+
+  function postToWix(message){
+    try{ window.parent.postMessage(message, "*"); }catch(e){}
+  }
+
+  function announceBridge(){
+    bridgeActive = false;
+    try{
+      if("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0,0);
+    }catch(e){}
+
+    postToWix({type:"portfolioBridgeHello"});
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },250);
+    setTimeout(()=>{ if(!bridgeActive) postToWix({type:"portfolioBridgeHello"}); },900);
+  }
+
+  window.addEventListener("message", event=>{
+    if(event?.data?.type === "portfolioBridgeActive") bridgeActive = true;
+  });
+
+  window.addEventListener("pageshow", announceBridge);
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", announceBridge, {once:true});
+  }else{
+    setTimeout(announceBridge,0);
+  }
+
+  window.addEventListener("wheel", event=>{
+    if(!bridgeActive || event.ctrlKey || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
+
+    let deltaY = event.deltaY;
+    if(event.deltaMode === 1) deltaY *= 16;
+    else if(event.deltaMode === 2) deltaY *= window.innerHeight;
+
+    event.preventDefault();
+    postToWix({type:"portfolioScroll", deltaY});
+  },{passive:false});
+})();
+</script>
+
+<script>
+/* FINAL GALLERY PATCH — fixed-height browsing + lightbox sequence metadata.
+   Keeps Wix iframe height stable and sends the full gallery order/index to
+   the Project Image Viewer so Previous / Next controls can navigate it. */
+(function(){
+  function getExpandedSourceFor(el){
+    var expanded = el.closest && el.closest('.cg-expanded');
+    if(expanded) return expanded;
+
+    var preview = el.closest && el.closest('.cg-gallery');
+    if(!preview) return null;
+
+    var footer = preview.nextElementSibling;
+    if(!footer || !footer.classList.contains('cg-gallery-footer')){
+      footer = preview.parentElement && preview.parentElement.querySelector('.cg-gallery-footer');
+    }
+    var btn = footer && footer.querySelector('[data-cg-expand]');
+    if(!btn) return null;
+
+    var key = btn.getAttribute('data-cg-expand');
+    if(!key) return null;
+    return document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+  }
+
+  function gallerySequence(el){
+    var source = getExpandedSourceFor(el);
+    var scope = source || (el.closest && el.closest('section')) || document;
+    var nodes = Array.from(scope.querySelectorAll('[data-cg-image]'));
+    var seen = new Set();
+    var images = [];
+
+    nodes.forEach(function(node){
+      var url = (node.getAttribute('data-cg-image') || '').trim();
+      if(url && !seen.has(url)){
+        seen.add(url);
+        images.push(url);
+      }
+    });
+
+    return images;
+  }
+
+  function openProjectImage(el){
+    if(!el) return;
+    var url = (el.getAttribute('data-cg-image') || '').trim();
+    if(!url) return;
+
+    var img = el.querySelector('img');
+    var images = gallerySequence(el);
+    var index = Math.max(0, images.indexOf(url));
+
+    window.parent.postMessage({
+      type:'openProjectImage',
+      url:url,
+      alt:(img && img.alt) || 'Project image',
+      images:images.length ? images : [url],
+      index:index
+    }, '*');
+  }
+
+  function setupFixedGalleryBrowsers(){
+    document.querySelectorAll('[data-cg-expand]').forEach(function(oldBtn){
+      if(oldBtn.dataset.cgFixedBrowser === '1') return;
+
+      var key = oldBtn.getAttribute('data-cg-expand');
+      var expanded = document.querySelector('[data-cg-expanded="' + key.replace(/"/g,'\\"') + '"]');
+      if(!expanded) return;
+
+      var footer = oldBtn.closest('.cg-gallery-footer');
+      var preview = footer && footer.previousElementSibling && footer.previousElementSibling.classList.contains('cg-gallery')
+        ? footer.previousElementSibling
+        : (footer ? footer.parentElement.querySelector('.cg-gallery') : null);
+      if(!preview) return;
+
+      var slots = Array.from(preview.querySelectorAll('[data-cg-image]'));
+      var source = Array.from(expanded.querySelectorAll('[data-cg-image]'));
+      if(!slots.length || !source.length) return;
+
+      var items = source.map(function(el){
+        var img = el.querySelector('img');
+        return {
+          url:(el.getAttribute('data-cg-image') || '').trim(),
+          alt:(img && img.alt) || 'Project image'
+        };
+      }).filter(function(item){ return item.url; });
+
+      expanded.setAttribute('hidden','');
+      expanded.style.display = 'none';
+
+      if(items.length <= slots.length){
+        if(footer) footer.style.display = 'none';
+        return;
+      }
+
+      // Replace the original control so older inline expand listeners are removed.
+      var btn = oldBtn.cloneNode(true);
+      oldBtn.replaceWith(btn);
+      btn.dataset.cgFixedBrowser = '1';
+
+      var label = btn.querySelector('span:first-child');
+      var arrow = btn.querySelector('.cg-gallery-arrow');
+      var pageSize = slots.length;
+      var starts = [];
+
+      for(var s=0; s<items.length; s+=pageSize) starts.push(s);
+      if(starts.length > 1){
+        var last = Math.max(0, items.length - pageSize);
+        starts[starts.length - 1] = last;
+        starts = starts.filter(function(v,i,a){ return i===0 || v!==a[i-1]; });
+      }
+
+      var page = 0;
+
+      function render(){
+        var start = starts[page];
+
+        slots.forEach(function(slot,i){
+          var item = items[start+i];
+          var img = slot.querySelector('img');
+
+          if(item){
+            slot.style.visibility = '';
+            slot.style.pointerEvents = '';
+            slot.setAttribute('data-cg-image',item.url);
+            slot.setAttribute('aria-label','Open ' + item.alt);
+
+            if(img){
+              img.src = item.url;
+              img.alt = item.alt;
+            }
+          }else{
+            slot.style.visibility = 'hidden';
+            slot.style.pointerEvents = 'none';
+            slot.removeAttribute('data-cg-image');
+          }
+        });
+
+        var end = Math.min(start + pageSize,items.length);
+
+        if(page === 0){
+          if(label) label.textContent = 'Browse all ' + items.length + ' images';
+          if(arrow) arrow.textContent = '→';
+        }else{
+          if(label) label.textContent = 'Images ' + (start+1) + '–' + end + ' of ' + items.length;
+          if(arrow) arrow.textContent = (page === starts.length-1) ? '↺' : '→';
+        }
+      }
+
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        page = (page + 1) % starts.length;
+        render();
+      });
+
+      render();
+    });
+  }
+
+  // One reliable image-open path for every gallery thumbnail.
+  document.addEventListener('click',function(e){
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  document.addEventListener('keydown',function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var el = e.target.closest && e.target.closest('[data-cg-image]');
+    if(!el) return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openProjectImage(el);
+  },true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded',setupFixedGalleryBrowsers);
+  }else{
+    setupFixedGalleryBrowsers();
+  }
+})();
+</script>
+<script src="/portfolio/assets/js/standalone.js"></script>
+</body></html>
